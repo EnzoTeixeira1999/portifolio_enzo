@@ -3,6 +3,7 @@ import { projectsData } from "../data/projectsData";
 
 function ProjectDetails() {
   const { lang, slug } = useParams();
+  const language = lang === "en" ? "en" : "pt";
 
   const project = projectsData.find((item) => {
     const projectSlug =
@@ -13,21 +14,23 @@ function ProjectDetails() {
 
   if (!project) {
     return (
-      <main className="flex min-h-screen items-center justify-center bg-black px-6 text-white">
-        <div className="text-center">
-          <h1 className="text-3xl font-bold">Projeto não encontrado</h1>
-          <Link
-            to={`/${language}`}
-            className="mt-6 inline-block rounded-full border border-cyan-400/30 px-5 py-2 text-sm text-cyan-300 transition hover:bg-cyan-400 hover:text-black"
-          >
-            Voltar para a home
-          </Link>
+      <main className="h-screen overflow-y-auto bg-black px-4 py-10 text-white sm:px-6 lg:px-10">
+        <div className="mx-auto flex min-h-full max-w-3xl items-center justify-center text-center">
+          <div>
+            <h1 className="text-3xl font-bold">
+              {language === "en" ? "Project not found" : "Projeto não encontrado"}
+            </h1>
+            <Link
+              to={`/${language}`}
+              className="mt-6 inline-block rounded-full border border-cyan-400/30 px-5 py-2 text-sm text-cyan-300 transition hover:bg-cyan-400 hover:text-black"
+            >
+              {language === "en" ? "Back to home" : "Voltar para a home"}
+            </Link>
+          </div>
         </div>
       </main>
     );
   }
-
-  const language = lang === "en" ? "en" : "pt";
 
   const title =
     typeof project.title === "object"
@@ -55,7 +58,7 @@ function ProjectDetails() {
   const backLabel = language === "pt" ? "← Voltar" : "← Back";
   const demoLabel = language === "pt" ? "Ver projeto" : "View project";
   const heroTag = language === "pt" ? "Projeto em destaque" : "Featured project";
-  const extrasTag = language === "pt" ? "Extras" : "Extras";
+  const extrasTag = "Extras";
   const curiositiesTitle =
     language === "pt" ? "Curiosidades do projeto" : "Project curiosities";
   const structureTag = language === "pt" ? "Estrutura" : "Structure";
@@ -67,17 +70,13 @@ function ProjectDetails() {
   const codeTitle =
     language === "pt" ? "Trechos do projeto" : "Project snippets";
   const blockLabel = language === "pt" ? "Bloco" : "Block";
-  const notFoundTitle =
-    language === "pt" ? "Projeto não encontrado" : "Project not found";
-  const homeLabel =
-    language === "pt" ? "Voltar para a home" : "Back to home";
 
   const projectSlug =
     typeof project.slug === "object" ? project.slug[language] : project.slug;
 
   return (
-    <main className="min-h-screen bg-black px-4 py-10 text-white sm:px-6 lg:px-10">
-      <div className="mx-auto max-w-7xl">
+    <main className="h-screen overflow-y-auto bg-black px-4 py-10 text-white sm:px-6 lg:px-10">
+      <div className="mx-auto max-w-7xl pb-16">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <Link
             to={`/${language}`}

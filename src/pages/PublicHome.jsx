@@ -395,7 +395,37 @@ function PlaceholderSection({ id, title, text }) {
     </section>
   );
 }
+function FadeSection({ children }) {
+  const sectionRef = useRef(null);
+  const [opacity, setOpacity] = useState(0);
 
+  useEffect(() => {
+    const element = sectionRef.current;
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setOpacity(entry.intersectionRatio > 0.4 ? 1 : 0);
+      },
+      { threshold: [0.4] }
+    );
+
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={sectionRef}
+      style={{
+        opacity,
+        transition: "opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1)", // 👈 0.9s
+      }}
+    >
+      {children}
+    </div>
+  );
+}
 function PublicHome() {
   const navigate = useNavigate();
   const { lang } = useParams();
@@ -460,40 +490,55 @@ function PublicHome() {
         ref={containerRef}
         className="hide-scrollbar h-screen snap-y snap-mandatory overflow-y-scroll scroll-smooth"
       >
-        <HomeSection
-          onNext={scrollToNext}
-          language={language}
-          onChangeLanguage={handleChangeLanguage}
-          t={t}
-        />
+        <FadeSection>
+  <HomeSection
+    onNext={scrollToNext}
+    language={language}
+    onChangeLanguage={handleChangeLanguage}
+    t={t}
+  />
+</FadeSection>
 
-        <ProjectsSection t={t} language={language} />
+<FadeSection>
+  <ProjectsSection t={t} language={language} />
+</FadeSection>
 
-        <ArtsSection
-          arts={arts}
-          artsLoading={artsLoading}
-          t={t}
-        />
+<FadeSection>
+  <ArtsSection
+    arts={arts}
+    artsLoading={artsLoading}
+    t={t}
+  />
+</FadeSection>
 
-        <AboutSection t={t} />
+<FadeSection>
+  <AboutSection t={t} />
+</FadeSection>
 
-        <PlaceholderSection
-          id="services"
-          title={t.services}
-          text={t.servicesText}
-        />
+<FadeSection>
+  <PlaceholderSection
+    id="services"
+    title={t.services}
+    text={t.servicesText}
+  />
+</FadeSection>
 
-        <PlaceholderSection
-          id="skills"
-          title={t.skills}
-          text={t.skillsText}
-        />
+<FadeSection>
+  <PlaceholderSection
+    id="skills"
+    title={t.skills}
+    text={t.skillsText}
+  />
+</FadeSection>
 
-        <PlaceholderSection
-          id="contact"
-          title={t.contact}
-          text={t.contactText}
-        />
+<FadeSection>
+  <PlaceholderSection
+    id="contact"
+    title={t.contact}
+    text={t.contactText}
+  />
+</FadeSection>
+        
       </main>
     </div>
   );

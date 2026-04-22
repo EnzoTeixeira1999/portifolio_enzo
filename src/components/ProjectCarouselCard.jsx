@@ -25,61 +25,54 @@ function ProjectCarouselCard({ project, position, language = "pt" }) {
     <article
       className={`overflow-hidden rounded-3xl border border-white/10 bg-white/[0.03] text-white shadow-[0_0_30px_rgba(0,0,0,0.25)] transition-all duration-500 ${
         isCenter
-          ? "w-[320px] sm:w-[360px] lg:w-[380px] scale-100 opacity-100"
-          : "w-[220px] lg:w-[250px] scale-90 opacity-45"
+          ? "w-full max-w-[500px] scale-100 opacity-100"
+          : "w-full max-w-[330px] scale-90 opacity-60"
       }`}
     >
-      <div className="relative">
+      <div className="h-[170px] w-full">
         <img
           src={project.coverImage}
           alt={title}
-          className={`w-full object-cover ${
-            isCenter ? "h-40 sm:h-44 lg:h-48" : "h-28 lg:h-32"
-          }`}
+          draggable={false}
+          className="h-full w-full object-cover select-none pointer-events-none"
         />
-
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
       </div>
 
-      <div className="p-4 sm:p-4">
-        <h3
-          className={`font-semibold ${
-            isCenter ? "text-base sm:text-lg" : "text-sm"
-          }`}
-        >
+      <div className="p-4">
+        <h3 className={`${isCenter ? "text-lg" : "text-base"} font-semibold`}>
           {title}
         </h3>
 
         <p
-          className={`mt-2 leading-5 text-zinc-400 ${
-            isCenter ? "text-xs sm:text-sm" : "text-[11px]"
+          className={`mt-2 leading-6 text-zinc-400 ${
+            isCenter ? "text-sm" : "text-xs"
           }`}
         >
           {shortDescription}
         </p>
 
-        <div className="mt-3 flex flex-wrap gap-1.5">
+        <div className="mt-3 flex flex-wrap gap-2">
           {project.technologies.map((tech) => (
             <span
               key={tech}
-              className="rounded-full border border-cyan-400/30 px-2 py-0.5 text-[9px] text-cyan-300 sm:text-[10px]"
+              className="rounded-full border border-cyan-400/30 px-2 py-1 text-[10px] text-cyan-300"
             >
               {tech}
             </span>
           ))}
         </div>
 
-        <div className="mt-5 flex flex-wrap gap-2">
+        <div className="mt-4 flex gap-2.5">
           <Link
             to={`/${language}/project/${slug}`}
-            className="rounded-full border border-fuchsia-400/40 bg-fuchsia-500/10 px-4 py-2 text-[11px] font-semibold text-fuchsia-300 transition hover:bg-fuchsia-400 hover:text-black sm:px-5 sm:text-xs"
+            className="flex-1 text-center rounded-full border border-fuchsia-400/40 bg-fuchsia-500/10 px-4 py-2 text-xs font-semibold text-fuchsia-300 transition hover:bg-fuchsia-400 hover:text-black"
           >
             {learnMoreLabel}
           </Link>
 
           <Link
             to={`/${language}/demo/${slug}`}
-            className="rounded-full border border-cyan-400/40 bg-cyan-500/10 px-4 py-2 text-[11px] font-semibold text-cyan-300 transition hover:bg-cyan-400 hover:text-black sm:px-5 sm:text-xs"
+            className="flex-1 text-center rounded-full border border-cyan-400/40 bg-cyan-500/10 px-4 py-2 text-xs font-semibold text-cyan-300 transition hover:bg-cyan-400 hover:text-black"
           >
             {viewProjectLabel}
           </Link>

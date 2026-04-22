@@ -13,8 +13,7 @@ export const projectsData = [
       pt: "Sistema para controle e aluguel de vagas com foco em regras de negócio, organização e escalabilidade.",
       en: "System for parking space control and rental focused on business rules, organization, and scalability.",
     },
-    coverImage:
-      "https://placehold.co/800x500/png?text=Projeto+1",
+    coverImage: "/projects/project1/capa.png",
     technologies: ["Java", "Spring Boot", "MongoDB", "Docker"],
     demoUrl: {
       pt: "/pt/demo/sistema-locacao-vagas",
@@ -50,7 +49,7 @@ export const projectsData = [
             pt: "Aqui fica a apresentação geral do projeto e o objetivo da aplicação.",
             en: "This section presents the overall project and the goal of the application.",
           },
-          image: "https://placehold.co/700x500/png?text=Imagem+1",
+          image: "/projects/project1/tela1.png",
         },
         {
           type: "image-right",
@@ -62,7 +61,7 @@ export const projectsData = [
             pt: "Essa parte mostra como o sistema organiza os dados e a navegação.",
             en: "This part shows how the system organizes data and navigation.",
           },
-          image: "https://placehold.co/700x500/png?text=Imagem+2",
+          image: "/projects/project1/tela2.png",
         },
       ],
       codeSnippets: [

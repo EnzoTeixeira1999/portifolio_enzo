@@ -1,109 +1,110 @@
-import React, { useEffect, useRef, useState } from "react";
-import { supabase } from "../lib/supabase";
-import AboutSection from "../components/AboutSection";
-import ProjectsSection from "../sections/ProjectsSection";
-import { useNavigate, useParams } from "react-router-dom";
+import React, { useEffect, useRef, useState } from 'react'
+import { supabase } from '../lib/supabase'
+import AboutSection from '../components/AboutSection'
+import ProjectsSection from '../sections/ProjectsSection'
+import UniverseBackground from '../components/UniverseBackground'
+import { useNavigate, useParams } from 'react-router-dom'
 
 const navItems = {
   pt: [
-    { label: "Início", href: "#home" },
-    { label: "Projetos", href: "#projects" },
-    { label: "Artes", href: "#arts" },
-    { label: "Sobre", href: "#about" },
-    { label: "Serviços", href: "#services" },
-    { label: "Habilidades", href: "#skills" },
-    { label: "Contato", href: "#contact" },
+    { label: 'Início', href: '#home' },
+    { label: 'Projetos', href: '#projects' },
+    { label: 'Artes', href: '#arts' },
+    { label: 'Sobre', href: '#about' },
+    { label: 'Serviços', href: '#services' },
+    { label: 'Habilidades', href: '#skills' },
+    { label: 'Contato', href: '#contact' },
   ],
   en: [
-    { label: "Home", href: "#home" },
-    { label: "Projects", href: "#projects" },
-    { label: "Arts", href: "#arts" },
-    { label: "About", href: "#about" },
-    { label: "Services", href: "#services" },
-    { label: "Skills", href: "#skills" },
-    { label: "Contact", href: "#contact" },
+    { label: 'Home', href: '#home' },
+    { label: 'Projects', href: '#projects' },
+    { label: 'Arts', href: '#arts' },
+    { label: 'About', href: '#about' },
+    { label: 'Services', href: '#services' },
+    { label: 'Skills', href: '#skills' },
+    { label: 'Contact', href: '#contact' },
   ],
-};
+}
 
 const translations = {
   pt: {
     hello: "Hello, It's Me",
     intro:
-      "Desenvolvedor com foco em backend, apaixonado por criar soluções modernas, APIs bem estruturadas e interfaces funcionais. Também atuo com design e gosto de unir visual limpo com tecnologia bem organizada.",
-    downloadCv: "Baixar CV",
-    rolePrefix: "E eu sou um",
-    projectsTag: "Projetos",
-    projectsTitle: "Projetos em destaque",
+      'Desenvolvedor com foco em backend, apaixonado por criar soluções modernas, APIs bem estruturadas e interfaces funcionais. Também atuo com design e gosto de unir visual limpo com tecnologia bem organizada.',
+    downloadCv: 'Baixar CV',
+    rolePrefix: 'E eu sou um',
+    projectsTag: 'Projetos',
+    projectsTitle: 'Projetos em destaque',
     projectsText:
-      "Alguns projetos que representam minha base técnica e minha forma de construir soluções na prática.",
-    artsTag: "Artes",
-    artsTitle: "Artes em destaque",
+      'Alguns projetos que representam minha base técnica e minha forma de construir soluções na prática.',
+    artsTag: 'Artes',
+    artsTitle: 'Artes em destaque',
     artsText:
-      "Trabalhos visuais, peças gráficas e criações que representam meu lado criativo.",
-    about: "Sobre",
-    services: "Serviços",
-    skills: "Habilidades",
-    contact: "Contato",
+      'Trabalhos visuais, peças gráficas e criações que representam meu lado criativo.',
+    about: 'Sobre',
+    services: 'Serviços',
+    skills: 'Habilidades',
+    contact: 'Contato',
     aboutText:
-      "Seção para contar sua trajetória, forma de trabalho, visão profissional e o que te diferencia como desenvolvedor.",
+      'Seção para contar sua trajetória, forma de trabalho, visão profissional e o que te diferencia como desenvolvedor.',
     servicesText:
-      "Área opcional para apresentar serviços que você pode oferecer, se quiser transformar o site também em vitrine profissional.",
+      'Área opcional para apresentar serviços que você pode oferecer, se quiser transformar o site também em vitrine profissional.',
     skillsText:
-      "Aqui vamos colocar sua experiência, stacks, ferramentas, linguagens e diferenciais profissionais em um layout mais forte e visual.",
+      'Aqui vamos colocar sua experiência, stacks, ferramentas, linguagens e diferenciais profissionais em um layout mais forte e visual.',
     contactText:
-      "Seção final para links, formulário, email, redes sociais e meios de contato profissional.",
-    loadingArts: "Carregando artes...",
-    noArts: "Nenhuma arte cadastrada ainda.",
-    noImage: "Sem imagem",
+      'Seção final para links, formulário, email, redes sociais e meios de contato profissional.',
+    loadingArts: 'Carregando artes...',
+    noArts: 'Nenhuma arte cadastrada ainda.',
+    noImage: 'Sem imagem',
   },
   en: {
     hello: "Hello, It's Me",
     intro:
-      "Backend-focused developer passionate about building modern solutions, well-structured APIs, and functional interfaces. I also work with design and enjoy combining clean visuals with well-organized technology.",
-    downloadCv: "Download CV",
+      'Backend-focused developer passionate about building modern solutions, well-structured APIs, and functional interfaces. I also work with design and enjoy combining clean visuals with well-organized technology.',
+    downloadCv: 'Download CV',
     rolePrefix: "And I'm a",
-    projectsTag: "Projects",
-    projectsTitle: "Featured projects",
+    projectsTag: 'Projects',
+    projectsTitle: 'Featured projects',
     projectsText:
-      "Some projects that represent my technical foundation and how I build practical solutions.",
-    artsTag: "Arts",
-    artsTitle: "Featured arts",
+      'Some projects that represent my technical foundation and how I build practical solutions.',
+    artsTag: 'Arts',
+    artsTitle: 'Featured arts',
     artsText:
-      "Visual works, graphic pieces, and creations that represent my creative side.",
-    about: "About",
-    services: "Services",
-    skills: "Skills",
-    contact: "Contact",
+      'Visual works, graphic pieces, and creations that represent my creative side.',
+    about: 'About',
+    services: 'Services',
+    skills: 'Skills',
+    contact: 'Contact',
     aboutText:
-      "A section to tell my story, my way of working, my professional vision, and what makes me different as a developer.",
+      'A section to tell my story, my way of working, my professional vision, and what makes me different as a developer.',
     servicesText:
-      "Optional area to present services I can offer if I want to turn the site into a professional showcase too.",
+      'Optional area to present services I can offer if I want to turn the site into a professional showcase too.',
     skillsText:
-      "Here I will present my experience, stacks, tools, languages, and professional strengths in a stronger visual layout.",
+      'Here I will present my experience, stacks, tools, languages, and professional strengths in a stronger visual layout.',
     contactText:
-      "Final section for links, form, email, social media, and professional contact channels.",
-    loadingArts: "Loading arts...",
-    noArts: "No arts registered yet.",
-    noImage: "No image",
+      'Final section for links, form, email, social media, and professional contact channels.',
+    loadingArts: 'Loading arts...',
+    noArts: 'No arts registered yet.',
+    noImage: 'No image',
   },
-};
+}
 
 function FloatingSectionNav({ visible, language }) {
   return (
     <div
       className={`fixed left-1/2 top-6 z-50 -translate-x-1/2 transition-all duration-500 ${
         visible
-          ? "translate-y-0 opacity-100"
-          : "pointer-events-none -translate-x-1/2 -translate-y-16 opacity-0"
+          ? 'translate-y-0 opacity-100'
+          : 'pointer-events-none -translate-y-16 opacity-0'
       }`}
     >
-      <div className="rounded-full border border-white/10 bg-black/70 px-6 py-3 backdrop-blur-xl">
+      <div className="rounded-full border border-cyan-300/15 bg-black/60 px-6 py-3 shadow-[0_0_35px_rgba(56,189,248,0.08)] backdrop-blur-xl">
         <div className="flex items-center justify-center gap-6 overflow-x-auto text-sm text-zinc-300">
           {navItems[language].map((item) => (
             <a
               key={item.label}
               href={item.href}
-              className="whitespace-nowrap transition hover:text-white"
+              className="whitespace-nowrap transition hover:text-cyan-200"
             >
               {item.label}
             </a>
@@ -111,29 +112,52 @@ function FloatingSectionNav({ visible, language }) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 function SocialLinks() {
   const baseClass =
-    "rounded-full border border-cyan-400/35 px-4 py-2 text-sm font-semibold text-cyan-300 transition hover:bg-cyan-400 hover:text-black";
+    'rounded-full border border-cyan-300/35 bg-black/10 px-4 py-2 text-sm font-semibold text-cyan-200 shadow-[0_0_18px_rgba(56,189,248,0.08)] backdrop-blur-sm transition hover:border-cyan-200 hover:bg-cyan-300/10 hover:text-white'
 
   return (
     <div className="mt-8 flex flex-wrap items-center gap-3">
-      <a href="https://twitter.com" target="_blank" rel="noreferrer" className={baseClass}>
+      <a
+        href="https://twitter.com"
+        target="_blank"
+        rel="noreferrer"
+        className={baseClass}
+      >
         Twitter
       </a>
-      <a href="https://instagram.com" target="_blank" rel="noreferrer" className={baseClass}>
+
+      <a
+        href="https://instagram.com"
+        target="_blank"
+        rel="noreferrer"
+        className={baseClass}
+      >
         Instagram
       </a>
-      <a href="https://linkedin.com" target="_blank" rel="noreferrer" className={baseClass}>
+
+      <a
+        href="https://linkedin.com"
+        target="_blank"
+        rel="noreferrer"
+        className={baseClass}
+      >
         LinkedIn
       </a>
-      <a href="https://github.com" target="_blank" rel="noreferrer" className={baseClass}>
+
+      <a
+        href="https://github.com"
+        target="_blank"
+        rel="noreferrer"
+        className={baseClass}
+      >
         GitHub
       </a>
     </div>
-  );
+  )
 }
 
 function SectionArrow({ onClick }) {
@@ -141,154 +165,157 @@ function SectionArrow({ onClick }) {
     <button
       type="button"
       onClick={onClick}
-      className="group inline-flex flex-col items-center text-2xl text-zinc-400 transition hover:text-white"
+      className="group inline-flex flex-col items-center text-2xl text-zinc-400 transition hover:text-cyan-200"
       aria-label="Descer para a próxima seção"
     >
       <span className="transition group-hover:translate-y-0.5">⌄</span>
       <span className="-mt-3 transition group-hover:translate-y-0.5">⌄</span>
     </button>
-  );
+  )
 }
 
 function LanguageSwitch({ language, onChangeLanguage }) {
   const baseClass =
-    "relative overflow-hidden rounded-full border px-5 py-2 text-sm font-semibold transition";
+    'relative overflow-hidden rounded-full border px-5 py-2 text-sm font-semibold transition'
 
   return (
     <div className="absolute left-0 top-[-60px] flex items-center gap-3">
       <button
-        onClick={() => onChangeLanguage("pt")}
+        onClick={() => onChangeLanguage('pt')}
         className={`${baseClass} ${
-          language === "pt"
-            ? "text-white border-transparent shadow-[0_0_12px_rgba(34,197,94,0.25),0_0_18px_rgba(234,179,8,0.2)]"
-            : "border-white/10 text-zinc-300 hover:bg-white/5"
+          language === 'pt'
+            ? 'border-transparent text-white shadow-[0_0_16px_rgba(34,197,94,0.22),0_0_22px_rgba(234,179,8,0.18)]'
+            : 'border-white/10 text-zinc-300 hover:bg-white/5'
         }`}
       >
-        {language === "pt" && (
+        {language === 'pt' && (
           <span className="absolute inset-0 bg-[linear-gradient(90deg,#22c55e,#eab308)] opacity-80" />
         )}
         <span className="relative z-10">PT</span>
       </button>
 
       <button
-        onClick={() => onChangeLanguage("en")}
+        onClick={() => onChangeLanguage('en')}
         className={`${baseClass} ${
-          language === "en"
-            ? "text-white border-transparent shadow-[0_0_12px_rgba(59,130,246,0.25),0_0_18px_rgba(239,68,68,0.2)]"
-            : "border-white/10 text-zinc-300 hover:bg-white/5"
+          language === 'en'
+            ? 'border-transparent text-white shadow-[0_0_16px_rgba(59,130,246,0.22),0_0_22px_rgba(239,68,68,0.18)]'
+            : 'border-white/10 text-zinc-300 hover:bg-white/5'
         }`}
       >
-        {language === "en" && (
+        {language === 'en' && (
           <span className="absolute inset-0 bg-[linear-gradient(90deg,#3b82f6,#ef4444)] opacity-80" />
         )}
         <span className="relative z-10">EN</span>
       </button>
     </div>
-  );
+  )
 }
 
 function HomeSection({ onNext, language, onChangeLanguage, t }) {
   const finalRoles =
-    language === "pt"
+    language === 'pt'
       ? [
-          "Desenvolvedor Backend",
-          "Desenvolvedor Frontend",
-          "Designer",
-          "Youtuber",
+          'Desenvolvedor Backend',
+          'Desenvolvedor Frontend',
+          'Designer',
+          'Youtuber',
         ]
       : [
-          "Backend Developer",
-          "Frontend Developer",
-          "Designer",
-          "Youtuber",
-        ];
+          'Backend Developer',
+          'Frontend Developer',
+          'Designer',
+          'Youtuber',
+        ]
 
-  const glitchChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890@#$%&*";
-  const [displayText, setDisplayText] = useState(finalRoles[0]);
+  const glitchChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890@#$%&*'
+  const [displayText, setDisplayText] = useState(finalRoles[0])
 
   useEffect(() => {
-    let currentWordIndex = 0;
-    let timeoutId;
-    let intervalId;
+    let currentWordIndex = 0
+    let timeoutId
+    let intervalId
 
     const runGlitchAnimation = () => {
-      const targetText = finalRoles[currentWordIndex];
-      let iteration = 0;
+      const targetText = finalRoles[currentWordIndex]
+      let iteration = 0
 
       intervalId = setInterval(() => {
         const glitched = targetText
-          .split("")
+          .split('')
           .map((char, index) => {
-            if (char === " ") return " ";
-            if (index < iteration) return targetText[index];
-            return glitchChars[Math.floor(Math.random() * glitchChars.length)];
+            if (char === ' ') return ' '
+            if (index < iteration) return targetText[index]
+            return glitchChars[Math.floor(Math.random() * glitchChars.length)]
           })
-          .join("");
+          .join('')
 
-        setDisplayText(glitched);
-        iteration += 0.5;
+        setDisplayText(glitched)
+        iteration += 0.5
 
         if (iteration >= targetText.length) {
-          clearInterval(intervalId);
-          setDisplayText(targetText);
+          clearInterval(intervalId)
+          setDisplayText(targetText)
 
           timeoutId = setTimeout(() => {
-            currentWordIndex = (currentWordIndex + 1) % finalRoles.length;
-            runGlitchAnimation();
-          }, 1400);
+            currentWordIndex = (currentWordIndex + 1) % finalRoles.length
+            runGlitchAnimation()
+          }, 1400)
         }
-      }, 55);
-    };
+      }, 55)
+    }
 
-    runGlitchAnimation();
+    runGlitchAnimation()
 
     return () => {
-      clearTimeout(timeoutId);
-      clearInterval(intervalId);
-    };
-  }, [language]);
+      clearTimeout(timeoutId)
+      clearInterval(intervalId)
+    }
+  }, [language])
 
   return (
     <section
       id="home"
-      className="relative flex min-h-screen snap-start items-center overflow-hidden bg-black px-6 lg:px-10"
+      className="relative isolate flex min-h-screen snap-start items-center overflow-hidden bg-black px-6 lg:px-10"
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(34,211,238,0.12),transparent_22%),radial-gradient(circle_at_80%_30%,rgba(236,72,153,0.12),transparent_18%),linear-gradient(to_bottom,rgba(255,255,255,0.02),rgba(0,0,0,0))]" />
+      <UniverseBackground />
 
-      <div className="relative mx-auto flex w-full max-w-7xl items-center">
+      <div className="relative z-20 mx-auto flex w-full max-w-7xl items-center">
         <div className="max-w-2xl">
-          <LanguageSwitch language={language} onChangeLanguage={onChangeLanguage} />
+          <LanguageSwitch
+            language={language}
+            onChangeLanguage={onChangeLanguage}
+          />
 
           <p className="mb-3 text-base text-zinc-300">{t.hello}</p>
 
-          <h1 className="text-4xl font-bold leading-tight sm:text-5xl lg:text-7xl">
+          <h1 className="text-4xl font-bold leading-tight text-white drop-shadow-[0_0_22px_rgba(255,255,255,0.12)] sm:text-5xl lg:text-7xl">
             Enzo Teixeira
           </h1>
 
           <h2 className="mt-4 text-xl text-zinc-200 sm:text-2xl lg:text-3xl">
-            {t.rolePrefix}{" "}
-            <span className="relative inline-block font-semibold text-cyan-400">
-              <span className="relative z-10 drop-shadow-[0_0_10px_rgba(34,211,238,0.9)]">
+            {t.rolePrefix}{' '}
+            <span className="relative inline-block font-semibold text-cyan-300">
+              <span className="relative z-10 drop-shadow-[0_0_14px_rgba(125,211,252,0.95)]">
                 {displayText}
               </span>
 
               <span
                 aria-hidden="true"
-                className="absolute left-0 top-0 z-0 translate-x-[1px] text-pink-500 opacity-60"
+                className="absolute left-0 top-0 z-0 translate-x-[1px] text-blue-300 opacity-50"
               >
                 {displayText}
               </span>
 
               <span
                 aria-hidden="true"
-                className="absolute left-0 top-0 z-0 -translate-x-[1px] text-cyan-300 opacity-60"
+                className="absolute left-0 top-0 z-0 -translate-x-[1px] text-violet-300 opacity-40"
               >
                 {displayText}
               </span>
             </span>
           </h2>
 
-          <p className="mt-6 max-w-xl text-sm leading-7 text-zinc-400 sm:text-base">
+          <p className="mt-6 max-w-xl text-sm leading-7 text-zinc-300 sm:text-base">
             {t.intro}
           </p>
 
@@ -296,7 +323,7 @@ function HomeSection({ onNext, language, onChangeLanguage, t }) {
 
           <a
             href="#"
-            className="mt-8 inline-flex items-center gap-2 rounded-full border border-cyan-400/40 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:border-cyan-400 hover:bg-white/10"
+            className="mt-8 inline-flex items-center gap-2 rounded-full border border-cyan-300/45 bg-white/5 px-6 py-3 text-sm font-semibold text-white shadow-[0_0_25px_rgba(56,189,248,0.14)] backdrop-blur-sm transition hover:border-cyan-200 hover:bg-cyan-300/10"
           >
             <span>↓</span>
             {t.downloadCv}
@@ -304,11 +331,11 @@ function HomeSection({ onNext, language, onChangeLanguage, t }) {
         </div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+      <div className="absolute bottom-8 left-1/2 z-20 -translate-x-1/2">
         <SectionArrow onClick={onNext} />
       </div>
     </section>
-  );
+  )
 }
 
 function ArtsSection({ arts, artsLoading, t }) {
@@ -319,7 +346,7 @@ function ArtsSection({ arts, artsLoading, t }) {
     >
       <div className="mx-auto w-full max-w-6xl">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="text-xs uppercase tracking-[0.3em] text-zinc-500">
+          <p className="text-xs uppercase tracking-[0.3em] text-cyan-400/70">
             {t.artsTag}
           </p>
 
@@ -337,9 +364,7 @@ function ArtsSection({ arts, artsLoading, t }) {
             {t.loadingArts}
           </div>
         ) : arts.length === 0 ? (
-          <div className="mt-10 text-center text-zinc-400">
-            {t.noArts}
-          </div>
+          <div className="mt-10 text-center text-zinc-400">{t.noArts}</div>
         ) : (
           <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {arts.map((art) => (
@@ -367,7 +392,7 @@ function ArtsSection({ arts, artsLoading, t }) {
                   </p>
 
                   {art.category && (
-                    <span className="mt-4 inline-block rounded-full border border-cyan-400/30 px-2.5 py-1 text-[10px] text-cyan-300">
+                    <span className="mt-4 inline-block rounded-full border border-cyan-300/30 px-2.5 py-1 text-[10px] text-cyan-200">
                       {art.category}
                     </span>
                   )}
@@ -378,7 +403,7 @@ function ArtsSection({ arts, artsLoading, t }) {
         )}
       </div>
     </section>
-  );
+  )
 }
 
 function PlaceholderSection({ id, title, text }) {
@@ -388,102 +413,111 @@ function PlaceholderSection({ id, title, text }) {
       className="flex min-h-screen snap-start items-center bg-black px-6 py-24 text-white lg:px-10"
     >
       <div className="mx-auto w-full max-w-7xl">
-        <p className="text-sm uppercase tracking-[0.3em] text-zinc-500">{title}</p>
+        <p className="text-sm uppercase tracking-[0.3em] text-cyan-400/70">
+          {title}
+        </p>
         <h2 className="mt-3 text-4xl font-bold sm:text-5xl">{title}</h2>
         <p className="mt-5 max-w-2xl leading-7 text-zinc-400">{text}</p>
       </div>
     </section>
-  );
+  )
 }
+
 function FadeSection({ children }) {
-  const sectionRef = useRef(null);
-  const [opacity, setOpacity] = useState(0);
+  const sectionRef = useRef(null)
+  const [opacity, setOpacity] = useState(0)
 
   useEffect(() => {
-    const element = sectionRef.current;
-    if (!element) return;
+    const element = sectionRef.current
+    if (!element) return
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setOpacity(entry.intersectionRatio > 0.4 ? 1 : 0);
+        setOpacity(entry.intersectionRatio > 0.4 ? 1 : 0)
       },
       { threshold: [0.4] }
-    );
+    )
 
-    observer.observe(element);
-    return () => observer.disconnect();
-  }, []);
+    observer.observe(element)
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <div
       ref={sectionRef}
+      className="relative"
       style={{
         opacity,
-        transition: "opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1)", // 👈 0.9s
+        transition: 'opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1)',
       }}
     >
       {children}
     </div>
-  );
+  )
 }
-function PublicHome() {
-  const navigate = useNavigate();
-  const { lang } = useParams();
 
-  const containerRef = useRef(null);
-  const [showNav, setShowNav] = useState(false);
-  const [language, setLanguage] = useState(lang === "en" ? "en" : "pt");
-  const t = translations[language];
-  const [arts, setArts] = useState([]);
-  const [artsLoading, setArtsLoading] = useState(true);
+function PublicHome() {
+  const navigate = useNavigate()
+  const { lang } = useParams()
+
+  const containerRef = useRef(null)
+  const [showNav, setShowNav] = useState(false)
+  const [language, setLanguage] = useState(lang === 'en' ? 'en' : 'pt')
+  const t = translations[language]
+  const [arts, setArts] = useState([])
+  const [artsLoading, setArtsLoading] = useState(true)
 
   const handleChangeLanguage = (nextLanguage) => {
-    setLanguage(nextLanguage);
-    navigate(nextLanguage === "en" ? "/en" : "/pt");
-  };
+    setLanguage(nextLanguage)
+    navigate(nextLanguage === 'en' ? '/en' : '/pt')
+  }
 
   const scrollToNext = () => {
-    const container = containerRef.current;
-    if (!container) return;
-    container.scrollTo({ top: window.innerHeight, behavior: "smooth" });
-  };
+    const container = containerRef.current
+    if (!container) return
+
+    container.scrollTo({
+      top: window.innerHeight,
+      behavior: 'smooth',
+    })
+  }
 
   async function fetchArts() {
-    setArtsLoading(true);
+    setArtsLoading(true)
 
     const { data, error } = await supabase
-      .from("arts")
-      .select("*")
-      .order("id", { ascending: false });
+      .from('arts')
+      .select('*')
+      .order('id', { ascending: false })
 
     if (!error) {
-      setArts(data || []);
+      setArts(data || [])
     }
 
-    setArtsLoading(false);
+    setArtsLoading(false)
   }
 
   useEffect(() => {
-    setLanguage(lang === "en" ? "en" : "pt");
-  }, [lang]);
+    setLanguage(lang === 'en' ? 'en' : 'pt')
+  }, [lang])
 
   useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
+    const container = containerRef.current
+    if (!container) return
 
     const handleScroll = () => {
-      setShowNav(container.scrollTop > window.innerHeight * 0.3);
-    };
+      setShowNav(container.scrollTop > window.innerHeight * 0.3)
+    }
 
-    handleScroll();
-    fetchArts();
+    handleScroll()
+    fetchArts()
 
-    container.addEventListener("scroll", handleScroll);
-    return () => container.removeEventListener("scroll", handleScroll);
-  }, []);
+    container.addEventListener('scroll', handleScroll)
+    return () => container.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
-    <div className="bg-black text-white">
+    <div className="relative min-h-screen bg-black text-white">
       <FloatingSectionNav visible={showNav} language={language} />
 
       <main
@@ -491,57 +525,52 @@ function PublicHome() {
         className="hide-scrollbar h-screen snap-y snap-mandatory overflow-y-scroll scroll-smooth"
       >
         <FadeSection>
-  <HomeSection
-    onNext={scrollToNext}
-    language={language}
-    onChangeLanguage={handleChangeLanguage}
-    t={t}
-  />
-</FadeSection>
+          <HomeSection
+            onNext={scrollToNext}
+            language={language}
+            onChangeLanguage={handleChangeLanguage}
+            t={t}
+          />
+        </FadeSection>
 
-<FadeSection>
-  <ProjectsSection t={t} language={language} />
-</FadeSection>
+        <FadeSection>
+          <ProjectsSection t={t} language={language} />
+        </FadeSection>
 
-<FadeSection>
-  <ArtsSection
-    arts={arts}
-    artsLoading={artsLoading}
-    t={t}
-  />
-</FadeSection>
+        <FadeSection>
+          <ArtsSection arts={arts} artsLoading={artsLoading} t={t} />
+        </FadeSection>
 
-<FadeSection>
-  <AboutSection t={t} />
-</FadeSection>
+        <FadeSection>
+          <AboutSection t={t} />
+        </FadeSection>
 
-<FadeSection>
-  <PlaceholderSection
-    id="services"
-    title={t.services}
-    text={t.servicesText}
-  />
-</FadeSection>
+        <FadeSection>
+          <PlaceholderSection
+            id="services"
+            title={t.services}
+            text={t.servicesText}
+          />
+        </FadeSection>
 
-<FadeSection>
-  <PlaceholderSection
-    id="skills"
-    title={t.skills}
-    text={t.skillsText}
-  />
-</FadeSection>
+        <FadeSection>
+          <PlaceholderSection
+            id="skills"
+            title={t.skills}
+            text={t.skillsText}
+          />
+        </FadeSection>
 
-<FadeSection>
-  <PlaceholderSection
-    id="contact"
-    title={t.contact}
-    text={t.contactText}
-  />
-</FadeSection>
-        
+        <FadeSection>
+          <PlaceholderSection
+            id="contact"
+            title={t.contact}
+            text={t.contactText}
+          />
+        </FadeSection>
       </main>
     </div>
-  );
+  )
 }
 
-export default PublicHome;
+export default PublicHome

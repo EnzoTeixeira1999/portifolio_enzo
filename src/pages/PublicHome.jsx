@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { supabase } from '../lib/supabase'
 import AboutSection from '../components/AboutSection'
+import ContactSection from '../sections/ContactSection'
 import ProjectsSection from '../sections/ProjectsSection'
+import SkillsSection from "../sections/SkillsSection";
 import UniverseBackground from '../components/UniverseBackground'
 import { useNavigate, useParams } from 'react-router-dom'
 
@@ -542,7 +544,7 @@ function PublicHome() {
         </FadeSection>
 
         <FadeSection>
-          <AboutSection t={t} />
+          <AboutSection t={t} language={language} />
         </FadeSection>
 
         <FadeSection>
@@ -554,19 +556,11 @@ function PublicHome() {
         </FadeSection>
 
         <FadeSection>
-          <PlaceholderSection
-            id="skills"
-            title={t.skills}
-            text={t.skillsText}
-          />
+        <SkillsSection t={t} language={language} />
         </FadeSection>
 
         <FadeSection>
-          <PlaceholderSection
-            id="contact"
-            title={t.contact}
-            text={t.contactText}
-          />
+        <ContactSection language={language} />
         </FadeSection>
       </main>
     </div>

@@ -1,54 +1,151 @@
-export default function AboutSection({ t }) {
+import { motion } from "framer-motion";
+
+function StatCard({ number, label }) {
+  return (
+    <motion.div
+      whileHover={{ y: -4, scale: 1.02 }}
+      transition={{ duration: 0.2 }}
+      className="rounded-2xl border border-cyan-300/20 bg-white/[0.03] px-5 py-4 text-center shadow-[0_0_20px_rgba(56,189,248,0.08)] transition hover:border-cyan-200/70 hover:bg-cyan-300/5"
+    >
+      <p className="text-2xl font-bold text-cyan-200">{number}</p>
+      <p className="mt-1 text-xs text-zinc-500">{label}</p>
+    </motion.div>
+  );
+}
+
+function AboutSection({ language = "pt" }) {
+  const content = {
+    pt: {
+      tag: "Sobre mim",
+      title: "Entre código, design e soluções reais.",
+      text:
+        "Sou desenvolvedor com foco em backend, especializado em Java e arquitetura de sistemas. Minha experiência une desenvolvimento, design e visão de negócio para criar aplicações modernas, escaláveis e intuitivas.",
+      cv: "Baixar CV",
+      stats: [
+        { number: "2+", label: "anos de experiência" },
+        { number: "8+", label: "tecnologias" },
+        { number: "20+", label: "projetos" },
+        { number: "100%", label: "dedicação" },
+      ],
+    },
+
+    en: {
+      tag: "About me",
+      title: "Between code, design and real solutions.",
+      text:
+        "Backend developer focused on Java and scalable architectures. I combine software development, design, and business thinking to build modern, intuitive, and scalable applications.",
+      cv: "Download CV",
+      stats: [
+        { number: "2+", label: "years" },
+        { number: "8+", label: "technologies" },
+        { number: "20+", label: "projects" },
+        { number: "100%", label: "dedication" },
+      ],
+    },
+  };
+
+  const about = content[language] || content.pt;
+
   return (
     <section
       id="about"
-      className="flex min-h-screen snap-start items-center bg-black px-6 py-16 text-white lg:px-10"
+      className="flex min-h-screen snap-start items-center bg-black px-8 py-12 text-white"
     >
-      <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-12 lg:flex-row lg:items-center lg:justify-between">
-        
+      <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-16">
+
         {/* TEXTO */}
-        <div className="max-w-2xl">
-          <p className="text-xs uppercase tracking-[0.3em] text-cyan-400/70">
-            {t.aboutTag}
+        <motion.div
+          initial={{ opacity: 0, x: -40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="max-w-2xl"
+        >
+          <p className="text-xs uppercase tracking-[0.35em] text-cyan-400">
+            {about.tag}
           </p>
 
-          <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
-            {t.aboutTitle}
+          <h2 className="mt-4 text-5xl font-bold leading-tight lg:text-6xl">
+            {about.title}
           </h2>
 
-          <p className="mt-6 text-sm leading-7 text-zinc-400 sm:text-base">
-            {t.aboutText}
+          <p className="mt-8 text-lg leading-9 text-zinc-400">
+            {about.text}
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
-            <span className="rounded-full border border-cyan-400/30 px-3 py-1 text-xs text-cyan-300">
-              Java
-            </span>
-            <span className="rounded-full border border-cyan-400/30 px-3 py-1 text-xs text-cyan-300">
-              Node.js
-            </span>
-            <span className="rounded-full border border-cyan-400/30 px-3 py-1 text-xs text-cyan-300">
-              React
-            </span>
-            <span className="rounded-full border border-cyan-400/30 px-3 py-1 text-xs text-cyan-300">
-              Docker
-            </span>
+            {[
+              "Java",
+              "Spring Boot",
+              "React",
+              "Docker",
+              "Git",
+              "AWS",
+            ].map((tech) => (
+              <span
+                key={tech}
+                className="rounded-full border border-cyan-400/30 px-4 py-2 text-sm text-cyan-300"
+              >
+                {tech}
+              </span>
+            ))}
           </div>
-        </div>
 
-        {/* IMAGEM */}
-        <div className="relative flex items-center justify-center">
-          
-          {/* Glow atrás */}
-          <div className="absolute h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl" />
+          <div className="mt-10 grid grid-cols-4 gap-4">
+            {about.stats.map((item) => (
+              <StatCard
+                key={item.label}
+                number={item.number}
+                label={item.label}
+              />
+            ))}
+          </div>
 
+          <button
+            className="
+              mt-10
+              rounded-full
+              border
+              border-cyan-400/40
+              bg-cyan-400/10
+              px-8
+              py-3
+              font-semibold
+              text-cyan-200
+              transition
+              hover:bg-cyan-400
+              hover:text-black
+            "
+          >
+            {about.cv}
+          </button>
+        </motion.div>
+
+        {/* FOTO */}
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+          className="flex flex-1 items-end justify-center"
+        >
           <img
             src="/perfil.png"
             alt="Enzo"
-            className="relative z-10 w-64 object-contain"
+            draggable={false}
+            className="
+              max-h-[700px]
+              w-auto
+              object-contain
+              select-none
+              drop-shadow-[0_18px_35px_rgba(0,0,0,0.45)]
+            "
           />
-        </div>
+        </motion.div>
+
       </div>
     </section>
   );
 }
+
+export default AboutSection;

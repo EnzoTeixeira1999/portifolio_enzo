@@ -2,8 +2,10 @@ import React, { useEffect, useRef, useState } from 'react'
 import { supabase } from '../lib/supabase'
 import AboutSection from '../components/AboutSection'
 import ContactSection from '../sections/ContactSection'
+import ArtsSection from '../sections/ArtsSection'
+import ServicesSection from '../sections/ServicesSection'
 import ProjectsSection from '../sections/ProjectsSection'
-import SkillsSection from "../sections/SkillsSection";
+import SkillsSection from '../sections/SkillsSection'
 import UniverseBackground from '../components/UniverseBackground'
 import { useNavigate, useParams } from 'react-router-dom'
 
@@ -39,25 +41,6 @@ const translations = {
     projectsTitle: 'Projetos em destaque',
     projectsText:
       'Alguns projetos que representam minha base técnica e minha forma de construir soluções na prática.',
-    artsTag: 'Artes',
-    artsTitle: 'Artes em destaque',
-    artsText:
-      'Trabalhos visuais, peças gráficas e criações que representam meu lado criativo.',
-    about: 'Sobre',
-    services: 'Serviços',
-    skills: 'Habilidades',
-    contact: 'Contato',
-    aboutText:
-      'Seção para contar sua trajetória, forma de trabalho, visão profissional e o que te diferencia como desenvolvedor.',
-    servicesText:
-      'Área opcional para apresentar serviços que você pode oferecer, se quiser transformar o site também em vitrine profissional.',
-    skillsText:
-      'Aqui vamos colocar sua experiência, stacks, ferramentas, linguagens e diferenciais profissionais em um layout mais forte e visual.',
-    contactText:
-      'Seção final para links, formulário, email, redes sociais e meios de contato profissional.',
-    loadingArts: 'Carregando artes...',
-    noArts: 'Nenhuma arte cadastrada ainda.',
-    noImage: 'Sem imagem',
   },
   en: {
     hello: "Hello, It's Me",
@@ -69,25 +52,6 @@ const translations = {
     projectsTitle: 'Featured projects',
     projectsText:
       'Some projects that represent my technical foundation and how I build practical solutions.',
-    artsTag: 'Arts',
-    artsTitle: 'Featured arts',
-    artsText:
-      'Visual works, graphic pieces, and creations that represent my creative side.',
-    about: 'About',
-    services: 'Services',
-    skills: 'Skills',
-    contact: 'Contact',
-    aboutText:
-      'A section to tell my story, my way of working, my professional vision, and what makes me different as a developer.',
-    servicesText:
-      'Optional area to present services I can offer if I want to turn the site into a professional showcase too.',
-    skillsText:
-      'Here I will present my experience, stacks, tools, languages, and professional strengths in a stronger visual layout.',
-    contactText:
-      'Final section for links, form, email, social media, and professional contact channels.',
-    loadingArts: 'Loading arts...',
-    noArts: 'No arts registered yet.',
-    noImage: 'No image',
   },
 }
 
@@ -123,39 +87,16 @@ function SocialLinks() {
 
   return (
     <div className="mt-8 flex flex-wrap items-center gap-3">
-      <a
-        href="https://twitter.com"
-        target="_blank"
-        rel="noreferrer"
-        className={baseClass}
-      >
+      <a href="https://twitter.com" target="_blank" rel="noreferrer" className={baseClass}>
         Twitter
       </a>
-
-      <a
-        href="https://instagram.com"
-        target="_blank"
-        rel="noreferrer"
-        className={baseClass}
-      >
+      <a href="https://instagram.com" target="_blank" rel="noreferrer" className={baseClass}>
         Instagram
       </a>
-
-      <a
-        href="https://linkedin.com"
-        target="_blank"
-        rel="noreferrer"
-        className={baseClass}
-      >
+      <a href="https://linkedin.com" target="_blank" rel="noreferrer" className={baseClass}>
         LinkedIn
       </a>
-
-      <a
-        href="https://github.com"
-        target="_blank"
-        rel="noreferrer"
-        className={baseClass}
-      >
+      <a href="https://github.com/EnzoTeixeira1999" target="_blank" rel="noreferrer" className={baseClass}>
         GitHub
       </a>
     </div>
@@ -216,18 +157,8 @@ function LanguageSwitch({ language, onChangeLanguage }) {
 function HomeSection({ onNext, language, onChangeLanguage, t }) {
   const finalRoles =
     language === 'pt'
-      ? [
-          'Desenvolvedor Backend',
-          'Desenvolvedor Frontend',
-          'Designer',
-          'Youtuber',
-        ]
-      : [
-          'Backend Developer',
-          'Frontend Developer',
-          'Designer',
-          'Youtuber',
-        ]
+      ? ['Desenvolvedor Backend', 'Desenvolvedor Frontend', 'Designer', 'Youtuber']
+      : ['Backend Developer', 'Frontend Developer', 'Designer', 'Youtuber']
 
   const glitchChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890@#$%&*'
   const [displayText, setDisplayText] = useState(finalRoles[0])
@@ -300,14 +231,12 @@ function HomeSection({ onNext, language, onChangeLanguage, t }) {
               <span className="relative z-10 drop-shadow-[0_0_14px_rgba(125,211,252,0.95)]">
                 {displayText}
               </span>
-
               <span
                 aria-hidden="true"
                 className="absolute left-0 top-0 z-0 translate-x-[1px] text-blue-300 opacity-50"
               >
                 {displayText}
               </span>
-
               <span
                 aria-hidden="true"
                 className="absolute left-0 top-0 z-0 -translate-x-[1px] text-violet-300 opacity-40"
@@ -335,91 +264,6 @@ function HomeSection({ onNext, language, onChangeLanguage, t }) {
 
       <div className="absolute bottom-8 left-1/2 z-20 -translate-x-1/2">
         <SectionArrow onClick={onNext} />
-      </div>
-    </section>
-  )
-}
-
-function ArtsSection({ arts, artsLoading, t }) {
-  return (
-    <section
-      id="arts"
-      className="flex min-h-screen snap-start items-center bg-black px-6 py-16 text-white lg:px-10"
-    >
-      <div className="mx-auto w-full max-w-6xl">
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="text-xs uppercase tracking-[0.3em] text-cyan-400/70">
-            {t.artsTag}
-          </p>
-
-          <h2 className="mt-2 text-3xl font-bold sm:text-4xl">
-            {t.artsTitle}
-          </h2>
-
-          <p className="mt-3 text-sm leading-6 text-zinc-400">
-            {t.artsText}
-          </p>
-        </div>
-
-        {artsLoading ? (
-          <div className="mt-10 text-center text-zinc-400">
-            {t.loadingArts}
-          </div>
-        ) : arts.length === 0 ? (
-          <div className="mt-10 text-center text-zinc-400">{t.noArts}</div>
-        ) : (
-          <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-            {arts.map((art) => (
-              <article
-                key={art.id}
-                className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]"
-              >
-                {art.image_url ? (
-                  <img
-                    src={art.image_url}
-                    alt={art.title}
-                    className="h-40 w-full object-cover"
-                  />
-                ) : (
-                  <div className="flex h-40 items-center justify-center bg-gradient-to-br from-zinc-800 to-zinc-900 text-xs text-zinc-500">
-                    {t.noImage}
-                  </div>
-                )}
-
-                <div className="p-4">
-                  <h3 className="text-base font-semibold">{art.title}</h3>
-
-                  <p className="mt-2 text-xs leading-6 text-zinc-400">
-                    {art.description}
-                  </p>
-
-                  {art.category && (
-                    <span className="mt-4 inline-block rounded-full border border-cyan-300/30 px-2.5 py-1 text-[10px] text-cyan-200">
-                      {art.category}
-                    </span>
-                  )}
-                </div>
-              </article>
-            ))}
-          </div>
-        )}
-      </div>
-    </section>
-  )
-}
-
-function PlaceholderSection({ id, title, text }) {
-  return (
-    <section
-      id={id}
-      className="flex min-h-screen snap-start items-center bg-black px-6 py-24 text-white lg:px-10"
-    >
-      <div className="mx-auto w-full max-w-7xl">
-        <p className="text-sm uppercase tracking-[0.3em] text-cyan-400/70">
-          {title}
-        </p>
-        <h2 className="mt-3 text-4xl font-bold sm:text-5xl">{title}</h2>
-        <p className="mt-5 max-w-2xl leading-7 text-zinc-400">{text}</p>
       </div>
     </section>
   )
@@ -540,7 +384,11 @@ function PublicHome() {
         </FadeSection>
 
         <FadeSection>
-          <ArtsSection arts={arts} artsLoading={artsLoading} t={t} />
+          <ArtsSection
+            arts={arts}
+            artsLoading={artsLoading}
+            language={language}
+          />
         </FadeSection>
 
         <FadeSection>
@@ -548,19 +396,15 @@ function PublicHome() {
         </FadeSection>
 
         <FadeSection>
-          <PlaceholderSection
-            id="services"
-            title={t.services}
-            text={t.servicesText}
-          />
+          <ServicesSection language={language} />
         </FadeSection>
 
         <FadeSection>
-        <SkillsSection t={t} language={language} />
+          <SkillsSection t={t} language={language} />
         </FadeSection>
 
         <FadeSection>
-        <ContactSection language={language} />
+          <ContactSection language={language} />
         </FadeSection>
       </main>
     </div>

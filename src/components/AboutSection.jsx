@@ -20,12 +20,11 @@ function AboutSection({ language = "pt" }) {
       title: "Entre código, design e soluções reais.",
       text:
         "Sou desenvolvedor com foco em backend, especializado em Java e arquitetura de sistemas. Minha experiência une desenvolvimento, design e visão de negócio para criar aplicações modernas, escaláveis e intuitivas.",
-      cv: "Baixar CV",
       stats: [
         { number: "2+", label: "anos de experiência" },
-        { number: "8+", label: "tecnologias" },
-        { number: "20+", label: "projetos" },
-        { number: "100%", label: "dedicação" },
+        { number: "15+", label: "tecnologias" },
+        { number: "3", label: "projetos relevantes" },
+        { number: "8+", label: "ferramentas" },
       ],
     },
 
@@ -34,12 +33,11 @@ function AboutSection({ language = "pt" }) {
       title: "Between code, design and real solutions.",
       text:
         "Backend developer focused on Java and scalable architectures. I combine software development, design, and business thinking to build modern, intuitive, and scalable applications.",
-      cv: "Download CV",
       stats: [
-        { number: "2+", label: "years" },
-        { number: "8+", label: "technologies" },
-        { number: "20+", label: "projects" },
-        { number: "100%", label: "dedication" },
+        { number: "2+", label: "years of experience" },
+        { number: "15+", label: "technologies" },
+        { number: "3", label: "featured projects" },
+        { number: "8+", label: "tools" },
       ],
     },
   };
@@ -52,8 +50,6 @@ function AboutSection({ language = "pt" }) {
       className="flex min-h-screen snap-start items-center bg-black px-8 py-12 text-white"
     >
       <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-16">
-
-        {/* TEXTO */}
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -74,21 +70,16 @@ function AboutSection({ language = "pt" }) {
           </p>
 
           <div className="mt-8 flex flex-wrap gap-3">
-            {[
-              "Java",
-              "Spring Boot",
-              "React",
-              "Docker",
-              "Git",
-              "AWS",
-            ].map((tech) => (
-              <span
-                key={tech}
-                className="rounded-full border border-cyan-400/30 px-4 py-2 text-sm text-cyan-300"
-              >
-                {tech}
-              </span>
-            ))}
+            {["Java", "Spring Boot", "React", "Docker", "Git", "AWS"].map(
+              (tech) => (
+                <span
+                  key={tech}
+                  className="rounded-full border border-cyan-400/30 px-4 py-2 text-sm text-cyan-300"
+                >
+                  {tech}
+                </span>
+              )
+            )}
           </div>
 
           <div className="mt-10 grid grid-cols-4 gap-4">
@@ -100,28 +91,8 @@ function AboutSection({ language = "pt" }) {
               />
             ))}
           </div>
-
-          <button
-            className="
-              mt-10
-              rounded-full
-              border
-              border-cyan-400/40
-              bg-cyan-400/10
-              px-8
-              py-3
-              font-semibold
-              text-cyan-200
-              transition
-              hover:bg-cyan-400
-              hover:text-black
-            "
-          >
-            {about.cv}
-          </button>
         </motion.div>
 
-        {/* FOTO */}
         <motion.div
           initial={{ opacity: 0, x: 40 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -133,16 +104,9 @@ function AboutSection({ language = "pt" }) {
             src="/perfil.png"
             alt="Enzo"
             draggable={false}
-            className="
-              max-h-[700px]
-              w-auto
-              object-contain
-              select-none
-              drop-shadow-[0_18px_35px_rgba(0,0,0,0.45)]
-            "
+            className="max-h-[700px] w-auto select-none object-contain drop-shadow-[0_18px_35px_rgba(0,0,0,0.45)]"
           />
         </motion.div>
-
       </div>
     </section>
   );

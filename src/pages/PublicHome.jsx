@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { supabase } from '../lib/supabase'
 import AboutSection from '../components/AboutSection'
 import ContactSection from '../sections/ContactSection'
-import ArtsSection from '../sections/ArtsSection'
 import ServicesSection from '../sections/ServicesSection'
 import ProjectsSection from '../sections/ProjectsSection'
 import SkillsSection from '../sections/SkillsSection'
@@ -13,7 +11,6 @@ const navItems = {
   pt: [
     { label: 'Início', href: '#home' },
     { label: 'Projetos', href: '#projects' },
-    { label: 'Artes', href: '#arts' },
     { label: 'Sobre', href: '#about' },
     { label: 'Serviços', href: '#services' },
     { label: 'Habilidades', href: '#skills' },
@@ -22,7 +19,6 @@ const navItems = {
   en: [
     { label: 'Home', href: '#home' },
     { label: 'Projects', href: '#projects' },
-    { label: 'Arts', href: '#arts' },
     { label: 'About', href: '#about' },
     { label: 'Services', href: '#services' },
     { label: 'Skills', href: '#skills' },
@@ -90,12 +86,15 @@ function SocialLinks() {
       <a href="https://twitter.com" target="_blank" rel="noreferrer" className={baseClass}>
         Twitter
       </a>
+
       <a href="https://instagram.com" target="_blank" rel="noreferrer" className={baseClass}>
         Instagram
       </a>
+
       <a href="https://linkedin.com" target="_blank" rel="noreferrer" className={baseClass}>
         LinkedIn
       </a>
+
       <a href="https://github.com/EnzoTeixeira1999" target="_blank" rel="noreferrer" className={baseClass}>
         GitHub
       </a>
@@ -156,9 +155,15 @@ function LanguageSwitch({ language, onChangeLanguage }) {
 
 function HomeSection({ onNext, language, onChangeLanguage, t }) {
   const finalRoles =
-    language === 'pt'
-      ? ['Desenvolvedor Backend', 'Desenvolvedor Frontend', 'Designer', 'Youtuber']
-      : ['Backend Developer', 'Frontend Developer', 'Designer', 'Youtuber']
+  language === 'pt'
+    ? [
+        'Desenvolvedor Backend',
+        'Desenvolvedor Frontend',
+      ]
+    : [
+        'Backend Developer',
+        'Frontend Developer',
+      ]
 
   const glitchChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890@#$%&*'
   const [displayText, setDisplayText] = useState(finalRoles[0])
@@ -310,8 +315,6 @@ function PublicHome() {
   const [showNav, setShowNav] = useState(false)
   const [language, setLanguage] = useState(lang === 'en' ? 'en' : 'pt')
   const t = translations[language]
-  const [arts, setArts] = useState([])
-  const [artsLoading, setArtsLoading] = useState(true)
 
   const handleChangeLanguage = (nextLanguage) => {
     setLanguage(nextLanguage)
@@ -328,21 +331,6 @@ function PublicHome() {
     })
   }
 
-  async function fetchArts() {
-    setArtsLoading(true)
-
-    const { data, error } = await supabase
-      .from('arts')
-      .select('*')
-      .order('id', { ascending: false })
-
-    if (!error) {
-      setArts(data || [])
-    }
-
-    setArtsLoading(false)
-  }
-
   useEffect(() => {
     setLanguage(lang === 'en' ? 'en' : 'pt')
   }, [lang])
@@ -356,7 +344,6 @@ function PublicHome() {
     }
 
     handleScroll()
-    fetchArts()
 
     container.addEventListener('scroll', handleScroll)
     return () => container.removeEventListener('scroll', handleScroll)
@@ -381,14 +368,6 @@ function PublicHome() {
 
         <FadeSection>
           <ProjectsSection t={t} language={language} />
-        </FadeSection>
-
-        <FadeSection>
-          <ArtsSection
-            arts={arts}
-            artsLoading={artsLoading}
-            language={language}
-          />
         </FadeSection>
 
         <FadeSection>

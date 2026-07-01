@@ -28,26 +28,26 @@ const navItems = {
 
 const translations = {
   pt: {
-    hello: "Hello, It's Me",
+    hello: 'Olá, me chamo',
     intro:
-      'Desenvolvedor com foco em backend, apaixonado por criar soluções modernas, APIs bem estruturadas e interfaces funcionais. Também atuo com design e gosto de unir visual limpo com tecnologia bem organizada.',
+      'Desenvolvedor de Software com foco em Backend, especializado em Java e desenvolvimento de APIs REST. Tenho experiência na construção de aplicações modernas, escaláveis e bem estruturadas, aplicando boas práticas de arquitetura, código limpo e tecnologias atuais para desenvolver soluções eficientes, seguras e de alta qualidade.',
     downloadCv: 'Baixar CV',
     rolePrefix: 'E eu sou um',
     projectsTag: 'Projetos',
     projectsTitle: 'Projetos em destaque',
     projectsText:
-      'Alguns projetos que representam minha base técnica e minha forma de construir soluções na prática.',
+      'Alguns projetos que representam minha experiência, evolução técnica e a forma como desenvolvo soluções na prática.',
   },
   en: {
-    hello: "Hello, It's Me",
+    hello: 'Hello, my name is',
     intro:
-      'Backend-focused developer passionate about building modern solutions, well-structured APIs, and functional interfaces. I also work with design and enjoy combining clean visuals with well-organized technology.',
+      'Software Developer focused on Backend, specialized in Java and REST API development. Experienced in building modern, scalable and well-structured applications using clean architecture, best coding practices and modern technologies to deliver efficient, secure and high-quality solutions.',
     downloadCv: 'Download CV',
     rolePrefix: "And I'm a",
     projectsTag: 'Projects',
-    projectsTitle: 'Featured projects',
+    projectsTitle: 'Featured Projects',
     projectsText:
-      'Some projects that represent my technical foundation and how I build practical solutions.',
+      'Some projects that represent my technical experience and how I build practical software solutions.',
   },
 }
 
@@ -83,19 +83,39 @@ function SocialLinks() {
 
   return (
     <div className="mt-8 flex flex-wrap items-center gap-3">
-      <a href="https://twitter.com" target="_blank" rel="noreferrer" className={baseClass}>
+      <a
+        href="https://twitter.com"
+        target="_blank"
+        rel="noreferrer"
+        className={baseClass}
+      >
         Twitter
       </a>
 
-      <a href="https://instagram.com" target="_blank" rel="noreferrer" className={baseClass}>
+      <a
+        href="https://instagram.com"
+        target="_blank"
+        rel="noreferrer"
+        className={baseClass}
+      >
         Instagram
       </a>
 
-      <a href="https://linkedin.com" target="_blank" rel="noreferrer" className={baseClass}>
+      <a
+        href="https://linkedin.com"
+        target="_blank"
+        rel="noreferrer"
+        className={baseClass}
+      >
         LinkedIn
       </a>
 
-      <a href="https://github.com/EnzoTeixeira1999" target="_blank" rel="noreferrer" className={baseClass}>
+      <a
+        href="https://github.com/EnzoTeixeira1999"
+        target="_blank"
+        rel="noreferrer"
+        className={baseClass}
+      >
         GitHub
       </a>
     </div>
@@ -155,15 +175,9 @@ function LanguageSwitch({ language, onChangeLanguage }) {
 
 function HomeSection({ onNext, language, onChangeLanguage, t }) {
   const finalRoles =
-  language === 'pt'
-    ? [
-        'Desenvolvedor Backend',
-        'Desenvolvedor Frontend',
-      ]
-    : [
-        'Backend Developer',
-        'Frontend Developer',
-      ]
+    language === 'pt'
+      ? ['Desenvolvedor Backend', 'Desenvolvedor Frontend']
+      : ['Backend Developer', 'Frontend Developer']
 
   const glitchChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890@#$%&*'
   const [displayText, setDisplayText] = useState(finalRoles[0])
@@ -218,7 +232,7 @@ function HomeSection({ onNext, language, onChangeLanguage, t }) {
       <UniverseBackground />
 
       <div className="relative z-20 mx-auto flex w-full max-w-7xl items-center">
-        <div className="max-w-2xl">
+        <div className="max-w-3xl">
           <LanguageSwitch
             language={language}
             onChangeLanguage={onChangeLanguage}
@@ -226,8 +240,8 @@ function HomeSection({ onNext, language, onChangeLanguage, t }) {
 
           <p className="mb-3 text-base text-zinc-300">{t.hello}</p>
 
-          <h1 className="text-4xl font-bold leading-tight text-white drop-shadow-[0_0_22px_rgba(255,255,255,0.12)] sm:text-5xl lg:text-7xl">
-            Enzo Teixeira
+          <h1 className="whitespace-nowrap text-4xl font-extrabold tracking-tight text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.12)] sm:text-5xl lg:text-6xl">
+            Enzo Teixeira Alves
           </h1>
 
           <h2 className="mt-4 text-xl text-zinc-200 sm:text-2xl lg:text-3xl">
@@ -251,7 +265,7 @@ function HomeSection({ onNext, language, onChangeLanguage, t }) {
             </span>
           </h2>
 
-          <p className="mt-6 max-w-xl text-sm leading-7 text-zinc-300 sm:text-base">
+          <p className="mt-6 max-w-2xl text-sm leading-7 text-zinc-300 sm:text-base">
             {t.intro}
           </p>
 

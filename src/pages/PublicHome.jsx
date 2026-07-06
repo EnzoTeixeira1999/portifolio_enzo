@@ -84,7 +84,7 @@ function SocialLinks() {
   return (
     <div className="mt-8 flex flex-wrap items-center gap-3">
       <a
-        href="https://twitter.com"
+        href="https://x.com/ETA_1999"
         target="_blank"
         rel="noreferrer"
         className={baseClass}
@@ -93,7 +93,7 @@ function SocialLinks() {
       </a>
 
       <a
-        href="https://instagram.com"
+        href="https://www.instagram.com/enzoteixeira1999?igsh=dTAwOGh1cnV4cDc2"
         target="_blank"
         rel="noreferrer"
         className={baseClass}
@@ -102,7 +102,7 @@ function SocialLinks() {
       </a>
 
       <a
-        href="https://linkedin.com"
+        href="https://www.linkedin.com/in/enzo-teixeira-alves-b80836215/"
         target="_blank"
         rel="noreferrer"
         className={baseClass}
@@ -272,7 +272,16 @@ function HomeSection({ onNext, language, onChangeLanguage, t }) {
           <SocialLinks />
 
           <a
-            href="#"
+            href={
+              language === 'pt'
+                ? '/Enzo_Teixeira_Alves_CV_PT.pdf'
+                : '/Enzo_Teixeira_Alves_CV_EN.pdf'
+            }
+            download={
+              language === 'pt'
+                ? 'Enzo_Teixeira_Alves_CV_PT.pdf'
+                : 'Enzo_Teixeira_Alves_CV_EN.pdf'
+            }
             className="mt-8 inline-flex items-center gap-2 rounded-full border border-cyan-300/45 bg-white/5 px-6 py-3 text-sm font-semibold text-white shadow-[0_0_25px_rgba(56,189,248,0.14)] backdrop-blur-sm transition hover:border-cyan-200 hover:bg-cyan-300/10"
           >
             <span>↓</span>

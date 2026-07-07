@@ -11,21 +11,21 @@ import {
 function ServiceCard({ Icon, title, text }) {
   return (
     <motion.div
-      whileHover={{ y: -4, scale: 1.015 }}
+      whileHover={{ y: -4, scale: 1.012 }}
       transition={{ duration: 0.2 }}
-      className="group rounded-2xl border border-cyan-300/20 bg-white/[0.03] p-4 shadow-[0_0_18px_rgba(56,189,248,0.06)] transition hover:border-cyan-200/70 hover:bg-cyan-300/5 sm:rounded-3xl sm:p-5"
+      className="group rounded-2xl border border-cyan-300/20 bg-white/[0.03] p-4 shadow-[0_0_18px_rgba(56,189,248,0.06)] transition hover:border-cyan-200/70 hover:bg-cyan-300/5 sm:rounded-3xl md:p-4 xl:p-5"
     >
-      <div className="flex items-start gap-4 sm:block">
-        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-cyan-300/20 bg-cyan-300/10 text-cyan-200 transition group-hover:bg-cyan-300/20 sm:mb-4 sm:h-12 sm:w-12 sm:rounded-2xl">
-          <Icon size={22} />
+      <div className="flex items-start gap-4 xl:block">
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-cyan-300/20 bg-cyan-300/10 text-cyan-200 transition group-hover:bg-cyan-300/20 xl:mb-4 xl:h-11 xl:w-11 xl:rounded-2xl">
+          <Icon size={21} />
         </div>
 
         <div>
-          <h3 className="text-base font-semibold text-white sm:text-lg">
+          <h3 className="text-base font-semibold text-white xl:text-lg">
             {title}
           </h3>
 
-          <p className="mt-1.5 text-xs leading-5 text-zinc-400 sm:mt-3 sm:text-sm sm:leading-6">
+          <p className="mt-1.5 text-xs leading-5 text-zinc-400 xl:mt-2 xl:text-sm xl:leading-6">
             {text}
           </p>
         </div>
@@ -131,24 +131,24 @@ function ServicesSection({ language = "pt" }) {
   return (
     <section
       id="services"
-      className="bg-black px-5 py-14 text-white md:flex md:min-h-screen md:snap-start md:items-center md:px-6 md:py-10 lg:px-10"
+      className="bg-black px-5 py-14 text-white md:flex md:min-h-screen md:snap-start md:items-center md:px-6 md:py-8 lg:px-10"
     >
       <div className="mx-auto w-full max-w-7xl">
-        <div className="mx-auto mb-7 max-w-3xl text-center md:mb-8">
+        <div className="mx-auto mb-6 max-w-3xl text-center">
           <p className="text-[10px] uppercase tracking-[0.35em] text-cyan-400/70 sm:text-xs">
             {t.tag}
           </p>
 
-          <h2 className="mx-auto mt-3 max-w-md text-3xl font-bold leading-tight sm:mt-4 sm:text-5xl">
+          <h2 className="mx-auto mt-3 max-w-md text-3xl font-bold leading-tight sm:mt-4 md:text-4xl xl:text-5xl">
             {t.title}
           </h2>
 
-          <p className="mx-auto mt-4 max-w-md text-sm leading-6 text-zinc-400 sm:max-w-2xl sm:text-base sm:leading-7">
+          <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-zinc-400 sm:max-w-2xl md:text-sm xl:text-base xl:leading-7">
             {t.text}
           </p>
         </div>
 
-        <div className="grid gap-3 md:grid-cols-2 md:gap-5 xl:grid-cols-3">
+        <div className="grid gap-3 md:grid-cols-2 md:gap-4 xl:grid-cols-3">
           {t.services.map((service, index) => (
             <motion.div
               key={service.title}

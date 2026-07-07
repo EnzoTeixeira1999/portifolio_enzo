@@ -11,17 +11,25 @@ import {
 function ServiceCard({ Icon, title, text }) {
   return (
     <motion.div
-      whileHover={{ y: -6, scale: 1.02 }}
+      whileHover={{ y: -4, scale: 1.015 }}
       transition={{ duration: 0.2 }}
-      className="group rounded-3xl border border-cyan-300/20 bg-white/[0.03] p-5 shadow-[0_0_22px_rgba(56,189,248,0.08)] transition hover:border-cyan-200/70 hover:bg-cyan-300/5"
+      className="group rounded-2xl border border-cyan-300/20 bg-white/[0.03] p-4 shadow-[0_0_18px_rgba(56,189,248,0.06)] transition hover:border-cyan-200/70 hover:bg-cyan-300/5 sm:rounded-3xl sm:p-5"
     >
-      <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl border border-cyan-300/20 bg-cyan-300/10 text-cyan-200 transition group-hover:bg-cyan-300/20">
-        <Icon size={25} />
+      <div className="flex items-start gap-4 sm:block">
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-cyan-300/20 bg-cyan-300/10 text-cyan-200 transition group-hover:bg-cyan-300/20 sm:mb-4 sm:h-12 sm:w-12 sm:rounded-2xl">
+          <Icon size={22} />
+        </div>
+
+        <div>
+          <h3 className="text-base font-semibold text-white sm:text-lg">
+            {title}
+          </h3>
+
+          <p className="mt-1.5 text-xs leading-5 text-zinc-400 sm:mt-3 sm:text-sm sm:leading-6">
+            {text}
+          </p>
+        </div>
       </div>
-
-      <h3 className="text-lg font-semibold text-white">{title}</h3>
-
-      <p className="mt-3 text-sm leading-6 text-zinc-400">{text}</p>
     </motion.div>
   );
 }
@@ -123,24 +131,24 @@ function ServicesSection({ language = "pt" }) {
   return (
     <section
       id="services"
-      className="flex min-h-screen snap-start items-center bg-black px-6 py-10 text-white lg:px-10"
+      className="bg-black px-5 py-14 text-white md:flex md:min-h-screen md:snap-start md:items-center md:px-6 md:py-10 lg:px-10"
     >
       <div className="mx-auto w-full max-w-7xl">
-        <div className="mx-auto mb-8 max-w-3xl text-center">
-          <p className="text-xs uppercase tracking-[0.35em] text-cyan-400/70">
+        <div className="mx-auto mb-7 max-w-3xl text-center md:mb-8">
+          <p className="text-[10px] uppercase tracking-[0.35em] text-cyan-400/70 sm:text-xs">
             {t.tag}
           </p>
 
-          <h2 className="mt-4 text-4xl font-bold leading-tight sm:text-5xl">
+          <h2 className="mx-auto mt-3 max-w-md text-3xl font-bold leading-tight sm:mt-4 sm:text-5xl">
             {t.title}
           </h2>
 
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-zinc-400 sm:text-base">
+          <p className="mx-auto mt-4 max-w-md text-sm leading-6 text-zinc-400 sm:max-w-2xl sm:text-base sm:leading-7">
             {t.text}
           </p>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-3 md:grid-cols-2 md:gap-5 xl:grid-cols-3">
           {t.services.map((service, index) => (
             <motion.div
               key={service.title}

@@ -12,17 +12,20 @@ function ContactCard({ Icon, title, text, href }) {
       href={href}
       target="_blank"
       rel="noreferrer"
-      whileHover={{ y: -6, scale: 1.03 }}
+      whileHover={{ y: -5, scale: 1.03 }}
       transition={{ duration: 0.2 }}
-      className="group rounded-3xl border border-cyan-400/20 bg-white/[0.03] p-6 text-center transition hover:border-cyan-300 hover:bg-cyan-400/5 hover:shadow-[0_0_30px_rgba(34,211,238,.18)]"
+      className="group rounded-2xl border border-cyan-400/20 bg-white/[0.03] p-4 transition hover:border-cyan-300 hover:bg-cyan-400/5 hover:shadow-[0_0_30px_rgba(34,211,238,.18)] sm:rounded-3xl sm:p-6"
     >
-      <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl border border-cyan-400/20 bg-cyan-400/10 text-cyan-300 transition group-hover:scale-110 group-hover:bg-cyan-400 group-hover:text-black">
-        <Icon size={30} />
+      <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl border border-cyan-400/20 bg-cyan-400/10 text-cyan-300 transition group-hover:scale-110 group-hover:bg-cyan-400 group-hover:text-black sm:mb-5 sm:h-16 sm:w-16 sm:rounded-2xl">
+        <Icon size={24} />
       </div>
 
-      <h3 className="text-lg font-semibold text-white">{title}</h3>
+      <h3 className="mt-3 text-center text-sm font-semibold text-white sm:text-lg">
+        {title}
+      </h3>
 
-      <p className="mt-2 text-sm leading-6 text-zinc-400">
+      {/* Apenas desktop */}
+      <p className="mt-2 hidden text-sm leading-6 text-zinc-400 sm:block">
         {text}
       </p>
     </motion.a>
@@ -56,26 +59,24 @@ export default function ContactSection({ language = "pt" }) {
   return (
     <section
       id="contact"
-      className="flex min-h-screen snap-start items-center bg-black px-6 py-12 text-white"
+      className="flex min-h-screen snap-start items-center bg-black px-5 py-14 text-white sm:px-6 sm:py-12"
     >
       <div className="mx-auto w-full max-w-7xl">
-
-        <div className="mb-14 text-center">
-          <p className="text-xs uppercase tracking-[0.35em] text-cyan-400">
+        <div className="mb-8 text-center sm:mb-14">
+          <p className="text-[10px] uppercase tracking-[0.35em] text-cyan-400 sm:text-xs">
             {t.tag}
           </p>
 
-          <h2 className="mt-4 text-5xl font-bold">
+          <h2 className="mx-auto mt-3 max-w-md text-3xl font-bold leading-tight sm:mt-4 sm:text-5xl">
             {t.title}
           </h2>
 
-          <p className="mx-auto mt-5 max-w-2xl text-zinc-400">
+          <p className="mx-auto mt-4 max-w-md text-sm leading-6 text-zinc-400 sm:mt-5 sm:max-w-2xl sm:text-base">
             {t.subtitle}
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 sm:gap-6 xl:grid-cols-4">
           <ContactCard
             Icon={FaEnvelope}
             title="Email"
@@ -103,13 +104,11 @@ export default function ContactSection({ language = "pt" }) {
             text={t.whatsapp}
             href="https://wa.me/5548991206698"
           />
-
         </div>
 
-        <div className="mt-16 border-t border-white/10 pt-6 text-center text-sm text-zinc-500">
+        <div className="mt-10 border-t border-white/10 pt-5 text-center text-xs text-zinc-500 sm:mt-16 sm:pt-6 sm:text-sm">
           © 2026 Enzo Teixeira Alves • Backend Developer
         </div>
-
       </div>
     </section>
   );

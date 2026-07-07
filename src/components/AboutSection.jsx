@@ -5,10 +5,12 @@ function StatCard({ number, label }) {
     <motion.div
       whileHover={{ y: -4, scale: 1.02 }}
       transition={{ duration: 0.2 }}
-      className="rounded-2xl border border-cyan-300/20 bg-white/[0.03] px-5 py-4 text-center shadow-[0_0_20px_rgba(56,189,248,0.08)] transition hover:border-cyan-200/70 hover:bg-cyan-300/5"
+      className="rounded-2xl border border-cyan-300/20 bg-white/[0.03] px-3 py-3 text-center shadow-[0_0_20px_rgba(56,189,248,0.08)] transition hover:border-cyan-200/70 hover:bg-cyan-300/5 sm:px-5 sm:py-4"
     >
-      <p className="text-2xl font-bold text-cyan-200">{number}</p>
-      <p className="mt-1 text-xs text-zinc-500">{label}</p>
+      <p className="text-xl font-bold text-cyan-200 sm:text-2xl">{number}</p>
+      <p className="mt-1 text-[10px] leading-4 text-zinc-500 sm:text-xs">
+        {label}
+      </p>
     </motion.div>
   );
 }
@@ -27,7 +29,6 @@ function AboutSection({ language = "pt" }) {
         { number: "8+", label: "ferramentas" },
       ],
     },
-
     en: {
       tag: "About me",
       title: "Between code, design and real solutions.",
@@ -47,34 +48,43 @@ function AboutSection({ language = "pt" }) {
   return (
     <section
       id="about"
-      className="flex min-h-screen snap-start items-center bg-black px-8 py-12 text-white"
+      className="flex min-h-screen snap-start items-center bg-black px-5 py-16 text-white sm:px-8 sm:py-12"
     >
-      <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-16">
+      <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-7 lg:flex-row lg:justify-between lg:gap-16">
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="max-w-2xl"
+          transition={{ duration: 0.55 }}
+          className="w-full max-w-2xl text-center lg:text-left"
         >
-          <p className="text-xs uppercase tracking-[0.35em] text-cyan-400">
+          <div className="mb-5 flex justify-center lg:hidden">
+            <img
+              src="/perfil.png"
+              alt="Enzo"
+              draggable={false}
+              className="h-28 w-28 rounded-full object-cover object-top shadow-[0_0_30px_rgba(34,211,238,0.18)]"
+            />
+          </div>
+
+          <p className="text-[10px] uppercase tracking-[0.32em] text-cyan-400 sm:text-xs">
             {about.tag}
           </p>
 
-          <h2 className="mt-4 text-5xl font-bold leading-tight lg:text-6xl">
+          <h2 className="mx-auto mt-3 max-w-[330px] text-4xl font-bold leading-tight sm:max-w-none sm:text-5xl lg:mx-0 lg:text-6xl">
             {about.title}
           </h2>
 
-          <p className="mt-8 text-lg leading-9 text-zinc-400">
+          <p className="mx-auto mt-5 max-w-md text-sm leading-7 text-zinc-400 sm:max-w-2xl sm:text-base lg:mx-0 lg:text-lg lg:leading-9">
             {about.text}
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mt-6 flex flex-wrap justify-center gap-2 sm:gap-3 lg:justify-start">
             {["Java", "Spring Boot", "React", "Docker", "Git", "AWS"].map(
               (tech) => (
                 <span
                   key={tech}
-                  className="rounded-full border border-cyan-400/30 px-4 py-2 text-sm text-cyan-300"
+                  className="rounded-full border border-cyan-400/30 px-3 py-1.5 text-xs text-cyan-300 sm:px-4 sm:py-2 sm:text-sm"
                 >
                   {tech}
                 </span>
@@ -82,7 +92,7 @@ function AboutSection({ language = "pt" }) {
             )}
           </div>
 
-          <div className="mt-10 grid grid-cols-4 gap-4">
+          <div className="mx-auto mt-7 grid max-w-md grid-cols-2 gap-3 sm:mt-10 sm:grid-cols-4 sm:gap-4 lg:mx-0 lg:max-w-none">
             {about.stats.map((item) => (
               <StatCard
                 key={item.label}
@@ -98,7 +108,7 @@ function AboutSection({ language = "pt" }) {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="flex flex-1 items-end justify-center"
+          className="hidden flex-1 items-end justify-center lg:flex"
         >
           <img
             src="/perfil.png"

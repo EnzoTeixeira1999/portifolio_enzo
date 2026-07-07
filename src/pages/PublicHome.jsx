@@ -52,26 +52,40 @@ const translations = {
 }
 
 function FloatingSectionNav({ visible, language }) {
+  const [open, setOpen] = useState(false)
+
   return (
     <div
-      className={`fixed left-1/2 top-6 z-50 -translate-x-1/2 transition-all duration-500 ${
+      className={`fixed left-5 top-5 z-50 transition-all duration-500 ${
         visible
           ? 'translate-y-0 opacity-100'
-          : 'pointer-events-none -translate-y-16 opacity-0'
+          : 'pointer-events-none -translate-y-6 opacity-0'
       }`}
     >
-      <div className="rounded-full border border-cyan-300/15 bg-black/60 px-6 py-3 shadow-[0_0_35px_rgba(56,189,248,0.08)] backdrop-blur-xl">
-        <div className="flex items-center justify-center gap-6 overflow-x-auto text-sm text-zinc-300">
-          {navItems[language].map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              className="whitespace-nowrap transition hover:text-cyan-200"
-            >
-              {item.label}
-            </a>
-          ))}
-        </div>
+      <div className="w-[170px] rounded-2xl border border-cyan-300/15 bg-black/35 px-3 py-2 shadow-[0_0_20px_rgba(56,189,248,0.06)] backdrop-blur-md">
+        <button
+          type="button"
+          onClick={() => setOpen((prev) => !prev)}
+          className="flex w-full items-center justify-between text-xs font-semibold text-cyan-100 outline-none"
+        >
+          <span>Menu</span>
+          <span className="text-base leading-none">{open ? '×' : '☰'}</span>
+        </button>
+
+        {open && (
+          <div className="mt-3 grid gap-1.5 pb-1">
+            {navItems[language].map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                onClick={() => setOpen(false)}
+                className="rounded-xl px-3 py-1.5 text-xs text-zinc-300 transition hover:bg-cyan-300/10 hover:text-cyan-200"
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   )
@@ -79,43 +93,23 @@ function FloatingSectionNav({ visible, language }) {
 
 function SocialLinks() {
   const baseClass =
-    'rounded-full border border-cyan-300/35 bg-black/10 px-4 py-2 text-sm font-semibold text-cyan-200 shadow-[0_0_18px_rgba(56,189,248,0.08)] backdrop-blur-sm transition hover:border-cyan-200 hover:bg-cyan-300/10 hover:text-white'
+    'rounded-full border border-cyan-300/35 bg-black/10 px-4 py-2 text-xs font-semibold text-cyan-200 shadow-[0_0_18px_rgba(56,189,248,0.08)] backdrop-blur-sm transition hover:border-cyan-200 hover:bg-cyan-300/10 hover:text-white sm:text-sm'
 
   return (
-    <div className="mt-8 flex flex-wrap items-center gap-3">
-      <a
-        href="https://x.com/ETA_1999"
-        target="_blank"
-        rel="noreferrer"
-        className={baseClass}
-      >
+    <div className="mt-7 flex flex-wrap items-center gap-2.5 sm:mt-8 sm:gap-3">
+      <a href="https://x.com/ETA_1999" target="_blank" rel="noreferrer" className={baseClass}>
         Twitter
       </a>
 
-      <a
-        href="https://www.instagram.com/enzoteixeira1999?igsh=dTAwOGh1cnV4cDc2"
-        target="_blank"
-        rel="noreferrer"
-        className={baseClass}
-      >
+      <a href="https://www.instagram.com/enzoteixeira1999?igsh=dTAwOGh1cnV4cDc2" target="_blank" rel="noreferrer" className={baseClass}>
         Instagram
       </a>
 
-      <a
-        href="https://www.linkedin.com/in/enzo-teixeira-alves-b80836215/"
-        target="_blank"
-        rel="noreferrer"
-        className={baseClass}
-      >
+      <a href="https://www.linkedin.com/in/enzo-teixeira-alves-b80836215/" target="_blank" rel="noreferrer" className={baseClass}>
         LinkedIn
       </a>
 
-      <a
-        href="https://github.com/EnzoTeixeira1999"
-        target="_blank"
-        rel="noreferrer"
-        className={baseClass}
-      >
+      <a href="https://github.com/EnzoTeixeira1999" target="_blank" rel="noreferrer" className={baseClass}>
         GitHub
       </a>
     </div>
@@ -138,10 +132,10 @@ function SectionArrow({ onClick }) {
 
 function LanguageSwitch({ language, onChangeLanguage }) {
   const baseClass =
-    'relative overflow-hidden rounded-full border px-5 py-2 text-sm font-semibold transition'
+    'relative overflow-hidden rounded-full border px-4 py-2 text-xs font-semibold transition sm:px-5 sm:text-sm'
 
   return (
-    <div className="absolute left-0 top-[-60px] flex items-center gap-3">
+    <div className="mb-8 flex items-center gap-3 sm:absolute sm:left-0 sm:top-[-60px] sm:mb-0">
       <button
         onClick={() => onChangeLanguage('pt')}
         className={`${baseClass} ${
@@ -227,45 +221,33 @@ function HomeSection({ onNext, language, onChangeLanguage, t }) {
   return (
     <section
       id="home"
-      className="relative isolate flex min-h-screen snap-start items-center overflow-hidden bg-black px-6 lg:px-10"
+      className="relative isolate flex min-h-[100svh] snap-start items-center overflow-hidden bg-black px-6 py-16 text-white sm:px-6 lg:px-10"
     >
       <UniverseBackground />
 
       <div className="relative z-20 mx-auto flex w-full max-w-7xl items-center">
-        <div className="max-w-3xl">
+        <div className="w-full max-w-3xl">
           <LanguageSwitch
             language={language}
             onChangeLanguage={onChangeLanguage}
           />
 
-          <p className="mb-3 text-base text-zinc-300">{t.hello}</p>
+          <p className="mb-3 text-sm text-zinc-300 sm:text-base">{t.hello}</p>
 
-          <h1 className="whitespace-nowrap text-4xl font-extrabold tracking-tight text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.12)] sm:text-5xl lg:text-6xl">
+          <h1 className="whitespace-nowrap text-[2rem] font-extrabold tracking-tight text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.12)] min-[390px]:text-[2.25rem] sm:text-5xl lg:text-6xl">
             Enzo Teixeira Alves
           </h1>
 
-          <h2 className="mt-4 text-xl text-zinc-200 sm:text-2xl lg:text-3xl">
+          <h2 className="mt-4 text-lg text-zinc-200 sm:text-2xl lg:text-3xl">
             {t.rolePrefix}{' '}
-            <span className="relative inline-block font-semibold text-cyan-300">
-              <span className="relative z-10 drop-shadow-[0_0_14px_rgba(125,211,252,0.95)]">
-                {displayText}
-              </span>
-              <span
-                aria-hidden="true"
-                className="absolute left-0 top-0 z-0 translate-x-[1px] text-blue-300 opacity-50"
-              >
-                {displayText}
-              </span>
-              <span
-                aria-hidden="true"
-                className="absolute left-0 top-0 z-0 -translate-x-[1px] text-violet-300 opacity-40"
-              >
+            <span className="block h-8 max-w-full overflow-hidden whitespace-nowrap font-semibold text-cyan-300 sm:inline-block sm:h-auto">
+              <span className="relative inline-block min-w-[22ch] text-[1rem] leading-8 drop-shadow-[0_0_14px_rgba(125,211,252,0.95)] sm:min-w-[24ch] sm:text-2xl lg:text-3xl">
                 {displayText}
               </span>
             </span>
           </h2>
 
-          <p className="mt-6 max-w-2xl text-sm leading-7 text-zinc-300 sm:text-base">
+          <p className="mt-5 max-w-2xl text-sm leading-7 text-zinc-300 sm:mt-6 sm:text-base">
             {t.intro}
           </p>
 
@@ -282,7 +264,7 @@ function HomeSection({ onNext, language, onChangeLanguage, t }) {
                 ? 'Enzo_Teixeira_Alves_CV_PT.pdf'
                 : 'Enzo_Teixeira_Alves_CV_EN.pdf'
             }
-            className="mt-8 inline-flex items-center gap-2 rounded-full border border-cyan-300/45 bg-white/5 px-6 py-3 text-sm font-semibold text-white shadow-[0_0_25px_rgba(56,189,248,0.14)] backdrop-blur-sm transition hover:border-cyan-200 hover:bg-cyan-300/10"
+            className="mt-7 inline-flex items-center gap-2 rounded-full border border-cyan-300/45 bg-white/5 px-5 py-3 text-sm font-semibold text-white shadow-[0_0_25px_rgba(56,189,248,0.14)] backdrop-blur-sm transition hover:border-cyan-200 hover:bg-cyan-300/10 sm:mt-8 sm:px-6"
           >
             <span>↓</span>
             {t.downloadCv}
@@ -290,7 +272,7 @@ function HomeSection({ onNext, language, onChangeLanguage, t }) {
         </div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 z-20 -translate-x-1/2">
+      <div className="absolute bottom-5 left-1/2 z-20 hidden -translate-x-1/2 sm:block">
         <SectionArrow onClick={onNext} />
       </div>
     </section>
@@ -299,9 +281,16 @@ function HomeSection({ onNext, language, onChangeLanguage, t }) {
 
 function FadeSection({ children }) {
   const sectionRef = useRef(null)
-  const [opacity, setOpacity] = useState(0)
+  const [opacity, setOpacity] = useState(1)
 
   useEffect(() => {
+    const isMobile = window.matchMedia('(max-width: 767px)').matches
+
+    if (isMobile) {
+      setOpacity(1)
+      return
+    }
+
     const element = sectionRef.current
     if (!element) return
 
@@ -378,7 +367,7 @@ function PublicHome() {
 
       <main
         ref={containerRef}
-        className="hide-scrollbar h-screen snap-y snap-mandatory overflow-y-scroll scroll-smooth"
+        className="hide-scrollbar h-screen overflow-y-scroll scroll-smooth md:snap-y md:snap-mandatory"
       >
         <FadeSection>
           <HomeSection

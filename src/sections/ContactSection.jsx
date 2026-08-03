@@ -130,6 +130,13 @@ export default function ContactSection({
         return;
       }
 
+      if (typeof window.gtag === "function") {
+        window.gtag("event", "generate_lead", {
+          form_name: "portfolio_contact",
+          form_language: language,
+        });
+      }
+
       form.reset();
       setStatus("success");
     } catch {

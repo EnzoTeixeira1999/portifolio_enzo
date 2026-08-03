@@ -25,9 +25,9 @@ function ContactCard({ Icon, title, text, href }) {
       </h3>
 
       {/* Apenas desktop */}
-      <p className="mt-2 hidden text-sm leading-6 text-zinc-400 sm:block">
-        {text}
-      </p>
+      <p className="mt-2 hidden w-full text-center text-sm leading-6 text-zinc-400 sm:block">
+       {text}
+     </p>
     </motion.a>
   );
 }

@@ -272,7 +272,7 @@ function HomeSection({
 
           <h2 className="mt-4 text-lg text-zinc-200 sm:text-2xl lg:text-3xl">
             {t.rolePrefix}{' '}
-            <span className="block h-8 max-w-full overflow-hidden whitespace-nowrap font-semibold text-cyan-300 sm:inline-block sm:h-auto">
+            <span className="block h-8 max-w-full overflow-hidden whitespace-nowrap font-semibold text-cyan-300 sm:inline-block sm:h-auto sm:overflow-visible sm:align-baseline">
               <span className="relative inline-block min-w-[22ch] text-[1rem] leading-8 drop-shadow-[0_0_14px_rgba(125,211,252,0.95)] sm:min-w-[24ch] sm:text-2xl lg:text-3xl">
                 {displayText}
               </span>

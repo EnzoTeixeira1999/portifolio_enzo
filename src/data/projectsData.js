@@ -46,7 +46,7 @@ export const projectsData = [
       pt: "Plataforma full stack para rastrear produtos, lotes, fornecedores, movimentações, ocorrências e passaportes digitais.",
       en: "Full-stack platform for tracking products, batches, suppliers, movements, incidents, and digital product passports.",
     },
-    coverImage: "/projects/tracepass/capa.png",
+    coverImage: "/projects/tracepass/capa.webp",
     coverBrand: "TracePass",
     coverInitials: "TP",
     coverTagline: {
@@ -97,7 +97,7 @@ export const projectsData = [
             pt: "O painel permite gerenciar empresas, produtos, fornecedores e lotes rastreados pela plataforma.",
             en: "The dashboard manages companies, products, suppliers, and batches tracked by the platform.",
           },
-          image: "/projects/tracepass/painel-administrativo.png",
+          image: "/projects/tracepass/painel-administrativo.webp",
         },
         {
           type: "image-right",
@@ -106,7 +106,7 @@ export const projectsData = [
             pt: "Cada evento é preservado em ordem cronológica, registrando local, responsável, quantidade e horário.",
             en: "Each event is preserved chronologically, recording location, responsible person, quantity, and time.",
           },
-          image: "/projects/tracepass/linha-do-tempo.png",
+          image: "/projects/tracepass/linha-do-tempo.webp",
         },
         {
           type: "image-left",
@@ -115,7 +115,7 @@ export const projectsData = [
             pt: "As coordenadas registradas nos eventos formam uma rota geográfica interativa da jornada do lote.",
             en: "Coordinates recorded in events form an interactive geographic route of the batch journey.",
           },
-          image: "/projects/tracepass/mapa-da-jornada.png",
+          image: "/projects/tracepass/mapa-da-jornada.webp",
         },
         {
           type: "image-right",
@@ -124,7 +124,7 @@ export const projectsData = [
             pt: "Clientes e parceiros podem consultar procedência, situação, movimentações e autenticidade do produto.",
             en: "Customers and partners can verify the product's provenance, status, movements, and authenticity.",
           },
-          image: "/projects/tracepass/passaporte-digital.png",
+          image: "/projects/tracepass/passaporte-digital.webp",
         },
         {
           type: "image-left",
@@ -133,7 +133,7 @@ export const projectsData = [
             pt: "Desvios críticos acionam bloqueios automáticos, investigação, resolução e liberação controlada.",
             en: "Critical incidents trigger automatic blocking, investigation, resolution, and controlled release.",
           },
-          image: "/projects/tracepass/seguranca-operacional.png",
+          image: "/projects/tracepass/seguranca-operacional.webp",
         },
         {
           type: "image-right",

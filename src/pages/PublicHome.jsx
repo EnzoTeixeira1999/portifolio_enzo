@@ -4,7 +4,6 @@ import ContactSection from '../sections/ContactSection'
 import ServicesSection from '../sections/ServicesSection'
 import ProjectsSection from '../sections/ProjectsSection'
 import SkillsSection from '../sections/SkillsSection'
-import UniverseBackground from '../components/UniverseBackground'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 
 const navItems = {
@@ -257,7 +256,6 @@ function HomeSection({
       id="home"
       className="relative isolate flex min-h-[100svh] snap-start items-center overflow-hidden bg-black px-6 py-16 text-white sm:px-6 lg:px-10"
     >
-      <UniverseBackground />
 
       <div className="relative z-20 mx-auto flex w-full max-w-7xl items-center">
         <div className="w-full max-w-3xl">

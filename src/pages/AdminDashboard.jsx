@@ -232,9 +232,13 @@ function AdminDashboard() {
   }
 
   useEffect(() => {
-    fetchProjects()
-    fetchArts()
-  }, [])
+  const timeoutId = window.setTimeout(() => {
+    void fetchProjects()
+    void fetchArts()
+  }, 0)
+
+  return () => window.clearTimeout(timeoutId)
+}, [])
 
   const inputClass =
     'w-full rounded-2xl border border-white/10 bg-black/60 px-4 py-3 text-sm text-white outline-none transition placeholder:text-zinc-500 focus:border-cyan-400/40 focus:bg-black'

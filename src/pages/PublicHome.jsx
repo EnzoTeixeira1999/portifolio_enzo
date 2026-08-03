@@ -5,7 +5,7 @@ import ServicesSection from '../sections/ServicesSection'
 import ProjectsSection from '../sections/ProjectsSection'
 import SkillsSection from '../sections/SkillsSection'
 import UniverseBackground from '../components/UniverseBackground'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 
 const navItems = {
   pt: [
@@ -320,10 +320,25 @@ function FadeSection({ children }) {
 }
 
 function PublicHome() {
+  const location = useLocation()
   const navigate = useNavigate()
   const { lang } = useParams()
 
   const containerRef = useRef(null)
+  useEffect(() => {
+  if (!location.hash) return
+
+  const frameId = requestAnimationFrame(() => {
+    const targetSection = document.querySelector(location.hash)
+
+    targetSection?.scrollIntoView({
+      behavior: 'auto',
+      block: 'start',
+    })
+  })
+
+  return () => cancelAnimationFrame(frameId)
+}, [location.hash])
   const [showNav, setShowNav] = useState(false)
   const [language, setLanguage] = useState(lang === 'en' ? 'en' : 'pt')
   const t = translations[language]

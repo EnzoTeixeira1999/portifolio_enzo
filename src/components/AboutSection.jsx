@@ -25,7 +25,7 @@ function AboutSection({ language = "pt" }) {
       stats: [
         { number: "2+", label: "anos de experiência" },
         { number: "15+", label: "tecnologias" },
-        { number: "4", label: "projetos relevantes" },
+        { number: "9", label: "projetos relevantes" },
         { number: "8+", label: "ferramentas" },
       ],
     },
@@ -37,7 +37,7 @@ function AboutSection({ language = "pt" }) {
       stats: [
         { number: "2+", label: "years of experience" },
         { number: "15+", label: "technologies" },
-        { number: "4", label: "featured projects" },
+        { number: "9", label: "featured projects" },
         { number: "8+", label: "tools" },
       ],
     },

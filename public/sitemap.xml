@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+>
+  <url>
+    <loc>https://portifolio-enzo-xi.vercel.app/pt</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://portifolio-enzo-xi.vercel.app/pt" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://portifolio-enzo-xi.vercel.app/en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portifolio-enzo-xi.vercel.app/pt" />
+  </url>
+
+  <url>
+    <loc>https://portifolio-enzo-xi.vercel.app/en</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://portifolio-enzo-xi.vercel.app/pt" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://portifolio-enzo-xi.vercel.app/en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://portifolio-enzo-xi.vercel.app/pt" />
+  </url>
+
+  <url>
+    <loc>https://portifolio-enzo-xi.vercel.app/pt/project/tracepass-rastreabilidade</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://portifolio-enzo-xi.vercel.app/pt/project/tracepass-rastreabilidade" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://portifolio-enzo-xi.vercel.app/en/project/tracepass-traceability" />
+  </url>
+
+  <url>
+    <loc>https://portifolio-enzo-xi.vercel.app/en/project/tracepass-traceability</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://portifolio-enzo-xi.vercel.app/pt/project/tracepass-rastreabilidade" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://portifolio-enzo-xi.vercel.app/en/project/tracepass-traceability" />
+  </url>
+
+  <url>
+    <loc>https://portifolio-enzo-xi.vercel.app/pt/project/coldtrack-cadeia-fria</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://portifolio-enzo-xi.vercel.app/pt/project/coldtrack-cadeia-fria" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://portifolio-enzo-xi.vercel.app/en/project/coldtrack-cold-chain" />
+  </url>
+
+  <url>
+    <loc>https://portifolio-enzo-xi.vercel.app/en/project/coldtrack-cold-chain</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://portifolio-enzo-xi.vercel.app/pt/project/coldtrack-cadeia-fria" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://portifolio-enzo-xi.vercel.app/en/project/coldtrack-cold-chain" />
+  </url>
+
+  <url>
+    <loc>https://portifolio-enzo-xi.vercel.app/pt/project/vendorguard-fornecedores</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://portifolio-enzo-xi.vercel.app/pt/project/vendorguard-fornecedores" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://portifolio-enzo-xi.vercel.app/en/project/vendorguard-suppliers" />
+  </url>
+
+  <url>
+    <loc>https://portifolio-enzo-xi.vercel.app/en/project/vendorguard-suppliers</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://portifolio-enzo-xi.vercel.app/pt/project/vendorguard-fornecedores" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://portifolio-enzo-xi.vercel.app/en/project/vendorguard-suppliers" />
+  </url>
+
+  <url>
+    <loc>https://portifolio-enzo-xi.vercel.app/pt/project/stockbalancer-estoques</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://portifolio-enzo-xi.vercel.app/pt/project/stockbalancer-estoques" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://portifolio-enzo-xi.vercel.app/en/project/stockbalancer-inventory" />
+  </url>
+
+  <url>
+    <loc>https://portifolio-enzo-xi.vercel.app/en/project/stockbalancer-inventory</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://portifolio-enzo-xi.vercel.app/pt/project/stockbalancer-estoques" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://portifolio-enzo-xi.vercel.app/en/project/stockbalancer-inventory" />
+  </url>
+
+  <url>
+    <loc>https://portifolio-enzo-xi.vercel.app/pt/project/wastelessbusiness-reducao-perdas</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://portifolio-enzo-xi.vercel.app/pt/project/wastelessbusiness-reducao-perdas" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://portifolio-enzo-xi.vercel.app/en/project/wastelessbusiness-loss-reduction" />
+  </url>
+
+  <url>
+    <loc>https://portifolio-enzo-xi.vercel.app/en/project/wastelessbusiness-loss-reduction</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://portifolio-enzo-xi.vercel.app/pt/project/wastelessbusiness-reducao-perdas" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://portifolio-enzo-xi.vercel.app/en/project/wastelessbusiness-loss-reduction" />
+  </url>
+
+  <url>
+    <loc>https://portifolio-enzo-xi.vercel.app/pt/project/datagalaxy-governanca-dados</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://portifolio-enzo-xi.vercel.app/pt/project/datagalaxy-governanca-dados" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://portifolio-enzo-xi.vercel.app/en/project/datagalaxy-data-governance" />
+  </url>
+
+  <url>
+    <loc>https://portifolio-enzo-xi.vercel.app/en/project/datagalaxy-data-governance</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://portifolio-enzo-xi.vercel.app/pt/project/datagalaxy-governanca-dados" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://portifolio-enzo-xi.vercel.app/en/project/datagalaxy-data-governance" />
+  </url>
+
+  <url>
+    <loc>https://portifolio-enzo-xi.vercel.app/pt/project/lostopportunity-oportunidades</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://portifolio-enzo-xi.vercel.app/pt/project/lostopportunity-oportunidades" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://portifolio-enzo-xi.vercel.app/en/project/lostopportunity-analysis" />
+  </url>
+
+  <url>
+    <loc>https://portifolio-enzo-xi.vercel.app/en/project/lostopportunity-analysis</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://portifolio-enzo-xi.vercel.app/pt/project/lostopportunity-oportunidades" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://portifolio-enzo-xi.vercel.app/en/project/lostopportunity-analysis" />
+  </url>
+
+  <url>
+    <loc>https://portifolio-enzo-xi.vercel.app/pt/project/processgenome-processos</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://portifolio-enzo-xi.vercel.app/pt/project/processgenome-processos" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://portifolio-enzo-xi.vercel.app/en/project/processgenome-processes" />
+  </url>
+
+  <url>
+    <loc>https://portifolio-enzo-xi.vercel.app/en/project/processgenome-processes</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://portifolio-enzo-xi.vercel.app/pt/project/processgenome-processos" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://portifolio-enzo-xi.vercel.app/en/project/processgenome-processes" />
+  </url>
+
+  <url>
+    <loc>https://portifolio-enzo-xi.vercel.app/pt/project/oficina-transparente</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://portifolio-enzo-xi.vercel.app/pt/project/oficina-transparente" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://portifolio-enzo-xi.vercel.app/en/project/transparent-workshop" />
+  </url>
+
+  <url>
+    <loc>https://portifolio-enzo-xi.vercel.app/en/project/transparent-workshop</loc>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://portifolio-enzo-xi.vercel.app/pt/project/oficina-transparente" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://portifolio-enzo-xi.vercel.app/en/project/transparent-workshop" />
+  </url>
+</urlset>

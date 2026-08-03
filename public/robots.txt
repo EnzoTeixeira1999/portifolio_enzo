@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin/dashboard
+
+Sitemap: https://portifolio-enzo-xi.vercel.app/sitemap.xml

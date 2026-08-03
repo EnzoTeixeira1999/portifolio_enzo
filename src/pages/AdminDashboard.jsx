@@ -1,11 +1,19 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
+import usePageSeo from '../hooks/usePageSeo'
 
 const BUCKET_NAME = 'portfolio-media'
 
 function AdminDashboard() {
   const navigate = useNavigate()
+    usePageSeo({
+    title: 'Painel administrativo | Enzo Teixeira',
+    description: 'Painel privado de gerenciamento do portfólio.',
+    language: 'pt-BR',
+    path: '/admin/dashboard',
+    robots: 'noindex, nofollow',
+  })
 
   const [projects, setProjects] = useState([])
   const [arts, setArts] = useState([])

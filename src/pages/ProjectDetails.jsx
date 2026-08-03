@@ -1,15 +1,49 @@
 import { useParams, Link } from "react-router-dom";
 import { projectsData } from "../data/projectsData";
+import usePageSeo from "../hooks/usePageSeo";
 
 function ProjectDetails() {
   const { lang, slug } = useParams();
   const language = lang === "en" ? "en" : "pt";
+    const getText = (value) =>
+    typeof value === "object" && !Array.isArray(value)
+      ? value?.[language]
+      : value;
 
   const project = projectsData.find((item) => {
     const projectSlugs =
       typeof item.slug === "object" ? Object.values(item.slug) : [item.slug];
 
     return projectSlugs.includes(slug);
+  });
+
+    const seoTitle = project
+    ? `${getText(project.title)} | Enzo Teixeira`
+    : language === "en"
+      ? "Project not found | Enzo Teixeira"
+      : "Projeto não encontrado | Enzo Teixeira";
+
+  const seoDescription = project
+    ? getText(project.shortDescription)
+    : language === "en"
+      ? "The requested project was not found."
+      : "O projeto solicitado não foi encontrado.";
+
+  const canonicalSlug = project
+    ? getText(project.slug)
+    : slug;
+
+  usePageSeo({
+    title: seoTitle,
+    description: seoDescription,
+    language:
+      language === "en"
+        ? "en"
+        : "pt-BR",
+    path: `/${language}/project/${canonicalSlug}`,
+    robots: project
+      ? "index, follow, max-image-preview:large"
+      : "noindex, nofollow",
   });
 
   if (!project) {
@@ -31,11 +65,6 @@ function ProjectDetails() {
       </main>
     );
   }
-
-  const getText = (value) =>
-    typeof value === "object" && !Array.isArray(value)
-      ? value?.[language]
-      : value;
 
   const title = getText(project.title);
   const purpose = getText(project.details?.purpose);

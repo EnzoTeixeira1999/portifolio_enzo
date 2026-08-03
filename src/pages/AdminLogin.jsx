@@ -1,9 +1,17 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
+import usePageSeo from '../hooks/usePageSeo'
 
 function AdminLogin() {
   const navigate = useNavigate()
+    usePageSeo({
+    title: 'Área administrativa | Enzo Teixeira',
+    description: 'Acesso restrito ao painel administrativo do portfólio.',
+    language: 'pt-BR',
+    path: '/admin',
+    robots: 'noindex, nofollow',
+  })
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [errorMessage, setErrorMessage] = useState('')

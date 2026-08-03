@@ -5,6 +5,7 @@ import ServicesSection from '../sections/ServicesSection'
 import ProjectsSection from '../sections/ProjectsSection'
 import SkillsSection from '../sections/SkillsSection'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import usePageSeo from '../hooks/usePageSeo'
 
 const navItems = {
   pt: [
@@ -384,6 +385,27 @@ function PublicHome() {
   const [showNav, setShowNav] = useState(false)
   const language = lang === 'en' ? 'en' : 'pt'
   const t = translations[language]
+    usePageSeo({
+    title:
+      language === 'en'
+        ? 'Enzo Teixeira Alves | Java Backend Developer'
+        : 'Enzo Teixeira Alves | Desenvolvedor Java Backend',
+
+    description:
+      language === 'en'
+        ? 'Portfolio of Enzo Teixeira Alves, a Java Backend Developer focused on Spring Boot, REST APIs, microservices, Docker, Kubernetes, and software architecture.'
+        : 'Portfólio de Enzo Teixeira Alves, desenvolvedor Java Backend especializado em Spring Boot, APIs REST, microsserviços, Docker, Kubernetes e arquitetura de sistemas.',
+
+    language:
+      language === 'en'
+        ? 'en'
+        : 'pt-BR',
+
+    path:
+      language === 'en'
+        ? '/en'
+        : '/pt',
+  })
 
   const handleChangeLanguage = (nextLanguage) => {
     navigate(nextLanguage === 'en' ? '/en' : '/pt')

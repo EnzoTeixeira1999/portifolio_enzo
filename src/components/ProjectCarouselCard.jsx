@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 
-function ProjectCarouselCard({ project, position, language = "pt" }) {
+function ProjectCarouselCard({
+  project,
+  position,
+  language = "pt",
+}) {
   const isCenter = position === "center";
 
   const title =
@@ -18,8 +22,25 @@ function ProjectCarouselCard({ project, position, language = "pt" }) {
       ? project.slug[language]
       : project.slug;
 
-  const learnMoreLabel = language === "pt" ? "Saiba mais" : "Learn more";
-  const viewProjectLabel = language === "pt" ? "Ver projeto" : "View project";
+  const liveUrl =
+    typeof project.liveUrl === "object"
+      ? project.liveUrl[language]
+      : project.liveUrl;
+
+  const coverTagline =
+    typeof project.coverTagline === "object"
+      ? project.coverTagline[language]
+      : project.coverTagline;
+
+  const learnMoreLabel =
+    language === "pt" ? "Saiba mais" : "Learn more";
+
+  const viewProjectLabel =
+    language === "pt"
+      ? "Ver projeto"
+      : project.liveLanguage
+        ? `View project (${project.liveLanguage})`
+        : "View project";
 
   return (
     <article
@@ -29,17 +50,61 @@ function ProjectCarouselCard({ project, position, language = "pt" }) {
           : "w-full max-w-[330px] scale-90 opacity-60"
       }`}
     >
-      <div className="h-[170px] w-full">
+      <div className="relative h-[170px] w-full overflow-hidden">
         <img
           src={project.coverImage}
           alt={title}
           draggable={false}
-          className="h-full w-full object-cover select-none pointer-events-none"
+          style={{
+            objectPosition:
+              project.coverPosition ?? "center",
+          }}
+          className={`h-full w-full select-none object-cover pointer-events-none ${
+            project.coverBrand
+              ? "scale-110 opacity-50"
+              : ""
+          }`}
         />
+
+        {project.coverBrand && (
+          <>
+            <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-[#051b29]/85 to-cyan-950/40" />
+
+            <div className="absolute inset-0 flex items-center justify-center px-6">
+              <div className="flex items-center gap-4">
+                <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-cyan-400/40 bg-cyan-400/10 text-lg font-bold text-cyan-300 shadow-[0_0_25px_rgba(34,211,238,0.12)]">
+                  TP
+                </div>
+
+                <div>
+                  <strong
+                    className={`block font-bold tracking-tight text-white ${
+                      isCenter
+                        ? "text-3xl"
+                        : "text-xl"
+                    }`}
+                  >
+                    {project.coverBrand}
+                  </strong>
+
+                  {coverTagline && (
+                    <span className="mt-1 block text-xs text-cyan-200/80">
+                      {coverTagline}
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+          </>
+        )}
       </div>
 
       <div className="p-4">
-        <h3 className={`${isCenter ? "text-lg" : "text-base"} font-semibold`}>
+        <h3
+          className={`font-semibold ${
+            isCenter ? "text-lg" : "text-base"
+          }`}
+        >
           {title}
         </h3>
 
@@ -52,12 +117,12 @@ function ProjectCarouselCard({ project, position, language = "pt" }) {
         </p>
 
         <div className="mt-3 flex flex-wrap gap-2">
-          {project.technologies.map((tech) => (
+          {project.technologies.map((technology) => (
             <span
-              key={tech}
+              key={technology}
               className="rounded-full border border-cyan-400/30 px-2 py-1 text-[10px] text-cyan-300"
             >
-              {tech}
+              {technology}
             </span>
           ))}
         </div>
@@ -65,17 +130,27 @@ function ProjectCarouselCard({ project, position, language = "pt" }) {
         <div className="mt-4 flex gap-2.5">
           <Link
             to={`/${language}/project/${slug}`}
-            className="flex-1 text-center rounded-full border border-fuchsia-400/40 bg-fuchsia-500/10 px-4 py-2 text-xs font-semibold text-fuchsia-300 transition hover:bg-fuchsia-400 hover:text-black"
+            className="flex-1 rounded-full border border-fuchsia-400/40 bg-fuchsia-500/10 px-4 py-2 text-center text-xs font-semibold text-fuchsia-300 transition hover:bg-fuchsia-400 hover:text-black"
           >
             {learnMoreLabel}
           </Link>
 
-          <Link
-            to={`/${language}/demo/${slug}`}
-            className="flex-1 text-center rounded-full border border-cyan-400/40 bg-cyan-500/10 px-4 py-2 text-xs font-semibold text-cyan-300 transition hover:bg-cyan-400 hover:text-black"
-          >
-            {viewProjectLabel}
-          </Link>
+          {liveUrl ? (
+            <a
+              href={liveUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="flex-1 rounded-full border border-cyan-400/40 bg-cyan-500/10 px-4 py-2 text-center text-xs font-semibold text-cyan-300 transition hover:bg-cyan-400 hover:text-black"
+            >
+              {viewProjectLabel}
+            </a>
+          ) : (
+            <span className="flex flex-1 cursor-not-allowed items-center justify-center rounded-full border border-white/10 px-4 py-2 text-center text-xs font-semibold text-zinc-500">
+              {language === "pt"
+                ? "Em desenvolvimento"
+                : "In development"}
+            </span>
+          )}
         </div>
       </div>
     </article>

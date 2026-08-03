@@ -205,4 +205,179 @@ export const projectsData = [
       ],
     },
   },
+  {
+    id: 4,
+    slug: {
+      pt: "tracepass-rastreabilidade",
+      en: "tracepass-traceability",
+    },
+    title: {
+      pt: "TracePass — Rastreabilidade Empresarial",
+      en: "TracePass — Enterprise Traceability",
+    },
+    shortDescription: {
+      pt: "Plataforma full stack para rastrear produtos, lotes, fornecedores, movimentações, ocorrências e passaportes digitais.",
+      en: "Full-stack platform for tracking products, batches, suppliers, movements, incidents, and digital product passports.",
+    },
+    coverImage: "/projects/tracepass/capa.png",
+        coverBrand: "TracePass",
+    coverTagline: {
+      pt: "Rastreabilidade de ponta a ponta",
+      en: "End-to-end traceability",
+    },
+    coverPosition: "center 38%",
+    technologies: [
+      "Java",
+      "Spring Boot",
+      "React",
+      "TypeScript",
+      "PostgreSQL",
+      "Docker",
+      "Flyway",
+    ],
+    liveUrl: "https://tracepass-enterprise.vercel.app",
+    liveLanguage: "PT-BR",
+    sourceUrl:
+      "https://github.com/EnzoTeixeira1999/enterprise-suite",
+    apiDocsUrl:
+      "https://tracepass-api.onrender.com/swagger-ui/index.html",
+    demoUrl: {
+      pt: "/pt/demo/tracepass-rastreabilidade",
+      en: "/en/demo/tracepass-traceability",
+    },
+    details: {
+      purpose: {
+        pt: "O TracePass foi criado para centralizar a rastreabilidade operacional de produtos, lotes e fornecedores, preservando toda a jornada desde a produção até o destino final.",
+        en: "TracePass was created to centralize the operational traceability of products, batches, and suppliers, preserving the entire journey from production to final destination.",
+      },
+      usability: {
+        pt: "A plataforma permite cadastrar organizações, produtos, fornecedores e lotes, registrar movimentações geográficas, tratar ocorrências com bloqueio automático e disponibilizar um passaporte digital público por QR Code.",
+        en: "The platform allows organizations to register products, suppliers, and batches, record geographic movements, handle incidents with automatic blocking, and provide a public digital passport through a QR Code.",
+      },
+      curiosities: {
+        pt: [
+          "Aplicação publicada com frontend na Vercel, backend Docker no Render e PostgreSQL no Neon.",
+          "Ocorrências graves bloqueiam automaticamente o lote até investigação, resolução e liberação controlada.",
+          "O passaporte público apresenta procedência, jornada geográfica, histórico de segurança e QR Code verificável.",
+        ],
+        en: [
+          "Application deployed with the frontend on Vercel, Docker backend on Render, and PostgreSQL on Neon.",
+          "High-severity incidents automatically block the batch until investigation, resolution, and controlled release.",
+          "The public passport presents provenance, geographic journey, safety history, and a verifiable QR Code.",
+        ],
+      },
+      sections: [
+        {
+          type: "image-left",
+          title: {
+            pt: "Painel administrativo",
+            en: "Administrative dashboard",
+          },
+          text: {
+            pt: "O painel permite gerenciar empresas, produtos, fornecedores e lotes rastreados pela plataforma.",
+            en: "The dashboard manages companies, products, suppliers, and batches tracked by the platform.",
+          },
+          image:
+            "/projects/tracepass/painel-administrativo.png",
+        },
+        {
+          type: "image-right",
+          title: {
+            pt: "Linha do tempo rastreável",
+            en: "Traceable timeline",
+          },
+          text: {
+            pt: "Cada evento é preservado em ordem cronológica, registrando local, responsável, quantidade e horário.",
+            en: "Each event is preserved chronologically, recording location, responsible person, quantity, and time.",
+          },
+          image: "/projects/tracepass/linha-do-tempo.png",
+        },
+        {
+          type: "image-left",
+          title: {
+            pt: "Mapa da jornada",
+            en: "Journey map",
+          },
+          text: {
+            pt: "As coordenadas registradas nos eventos formam uma rota geográfica interativa da jornada do lote.",
+            en: "Coordinates recorded in events form an interactive geographic route of the batch journey.",
+          },
+          image: "/projects/tracepass/mapa-da-jornada.png",
+        },
+        {
+          type: "image-right",
+          title: {
+            pt: "Passaporte digital público",
+            en: "Public digital passport",
+          },
+          text: {
+            pt: "Clientes e parceiros podem consultar procedência, situação, movimentações e autenticidade do produto.",
+            en: "Customers and partners can verify the product's provenance, status, movements, and authenticity.",
+          },
+          image:
+            "/projects/tracepass/passaporte-digital.png",
+        },
+        {
+          type: "image-left",
+          title: {
+            pt: "Segurança operacional",
+            en: "Operational safety",
+          },
+          text: {
+            pt: "Desvios críticos acionam bloqueios automáticos, investigação, resolução e liberação controlada.",
+            en: "Critical incidents trigger automatic blocking, investigation, resolution, and controlled release.",
+          },
+          image:
+            "/projects/tracepass/seguranca-operacional.png",
+        },
+        {
+          type: "image-right",
+          title: {
+            pt: "Acesso por QR Code",
+            en: "QR Code access",
+          },
+          text: {
+            pt: "O QR Code pode ser adicionado à embalagem para abrir diretamente o passaporte público do lote.",
+            en: "The QR Code can be attached to the package to open the batch's public passport directly.",
+          },
+          image: "/projects/tracepass/qr-code.png",
+        },
+        {
+          type: "image-left",
+          title: {
+            pt: "API documentada",
+            en: "Documented API",
+          },
+          text: {
+            pt: "A API REST possui documentação interativa com Swagger e OpenAPI, organizada por domínio.",
+            en: "The REST API has interactive Swagger and OpenAPI documentation organized by domain.",
+          },
+          image: "/projects/tracepass/swagger-api.png",
+        },
+      ],
+      codeSnippets: [
+        {
+          title: {
+            pt: "Consultar passaporte público",
+            en: "Get public passport",
+          },
+          code: `GET /api/public/passports/{batchId}`,
+        },
+        {
+          title: {
+            pt: "Registrar movimentação",
+            en: "Register movement",
+          },
+          code: `POST /api/companies/{companyId}/products/{productId}/batches/{batchId}/movements`,
+        },
+        {
+          title: {
+            pt: "Liberar lote após inspeção",
+            en: "Release batch after inspection",
+          },
+          code: `POST /api/companies/{companyId}/products/{productId}/batches/{batchId}/release`,
+        },
+      ],
+    },
+  },
 ];

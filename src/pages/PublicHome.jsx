@@ -167,14 +167,32 @@ function LanguageSwitch({ language, onChangeLanguage }) {
   )
 }
 
-function HomeSection({ onNext, language, onChangeLanguage, t }) {
-  const finalRoles =
-    language === 'pt'
-      ? ['Desenvolvedor Backend', 'Desenvolvedor Frontend']
-      : ['Backend Developer', 'Frontend Developer']
+const rolesByLanguage = {
+  pt: [
+    'Desenvolvedor Backend',
+    'Desenvolvedor Frontend',
+  ],
+  en: [
+    'Backend Developer',
+    'Frontend Developer',
+  ],
+}
 
-  const glitchChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890@#$%&*'
-  const [displayText, setDisplayText] = useState(finalRoles[0])
+function HomeSection({
+  onNext,
+  language,
+  onChangeLanguage,
+  t,
+}) {
+
+  const finalRoles =
+    rolesByLanguage[language] ?? rolesByLanguage.pt
+
+  const glitchChars =
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890@#$%&*'
+
+  const [displayText, setDisplayText] =
+    useState(finalRoles[0])
 
   useEffect(() => {
     let currentWordIndex = 0
@@ -182,16 +200,29 @@ function HomeSection({ onNext, language, onChangeLanguage, t }) {
     let intervalId
 
     const runGlitchAnimation = () => {
-      const targetText = finalRoles[currentWordIndex]
+      const targetText =
+        finalRoles[currentWordIndex]
+
       let iteration = 0
 
       intervalId = setInterval(() => {
         const glitched = targetText
           .split('')
           .map((char, index) => {
-            if (char === ' ') return ' '
-            if (index < iteration) return targetText[index]
-            return glitchChars[Math.floor(Math.random() * glitchChars.length)]
+            if (char === ' ') {
+              return ' '
+            }
+
+            if (index < iteration) {
+              return targetText[index]
+            }
+
+            return glitchChars[
+              Math.floor(
+                Math.random() *
+                  glitchChars.length,
+              )
+            ]
           })
           .join('')
 
@@ -203,7 +234,10 @@ function HomeSection({ onNext, language, onChangeLanguage, t }) {
           setDisplayText(targetText)
 
           timeoutId = setTimeout(() => {
-            currentWordIndex = (currentWordIndex + 1) % finalRoles.length
+            currentWordIndex =
+              (currentWordIndex + 1) %
+              finalRoles.length
+
             runGlitchAnimation()
           }, 1400)
         }
@@ -216,7 +250,7 @@ function HomeSection({ onNext, language, onChangeLanguage, t }) {
       clearTimeout(timeoutId)
       clearInterval(intervalId)
     }
-  }, [language])
+  }, [finalRoles])
 
   return (
     <section
@@ -284,24 +318,33 @@ function FadeSection({ children }) {
   const [opacity, setOpacity] = useState(1)
 
   useEffect(() => {
-    const isMobile = window.matchMedia('(max-width: 767px)').matches
+    const isMobile = window.matchMedia(
+      '(max-width: 767px)',
+    ).matches
 
     if (isMobile) {
-      setOpacity(1)
       return
     }
 
     const element = sectionRef.current
-    if (!element) return
+
+    if (!element) {
+      return
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setOpacity(entry.intersectionRatio > 0.4 ? 1 : 0)
+        setOpacity(
+          entry.intersectionRatio > 0.4 ? 1 : 0,
+        )
       },
-      { threshold: [0.4] }
+      {
+        threshold: [0.4],
+      },
     )
 
     observer.observe(element)
+
     return () => observer.disconnect()
   }, [])
 
@@ -311,7 +354,8 @@ function FadeSection({ children }) {
       className="relative"
       style={{
         opacity,
-        transition: 'opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1)',
+        transition:
+          'opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1)',
       }}
     >
       {children}
@@ -340,11 +384,10 @@ function PublicHome() {
   return () => cancelAnimationFrame(frameId)
 }, [location.hash])
   const [showNav, setShowNav] = useState(false)
-  const [language, setLanguage] = useState(lang === 'en' ? 'en' : 'pt')
+  const language = lang === 'en' ? 'en' : 'pt'
   const t = translations[language]
 
   const handleChangeLanguage = (nextLanguage) => {
-    setLanguage(nextLanguage)
     navigate(nextLanguage === 'en' ? '/en' : '/pt')
   }
 
@@ -357,10 +400,6 @@ function PublicHome() {
       behavior: 'smooth',
     })
   }
-
-  useEffect(() => {
-    setLanguage(lang === 'en' ? 'en' : 'pt')
-  }, [lang])
 
   useEffect(() => {
     const container = containerRef.current

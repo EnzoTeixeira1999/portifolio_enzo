@@ -74,14 +74,25 @@ function ProjectsCarousel({ projects, language = "pt" }) {
           {projects.map((_, index) => (
             <button
               key={index}
+              type="button"
               onClick={() => setCurrentIndex(index)}
+              aria-label={
+                language === "pt"
+                  ? `Exibir projeto ${index + 1} de ${total}`
+                  : `Show project ${index + 1} of ${total}`
+              }
+              aria-current={
+                index === currentIndex
+                  ? "true"
+                  : undefined
+              }
               className={`h-2 rounded-full transition-all ${
                 index === currentIndex
-                  ? "w-7 bg-cyan-400 shadow-[0_0_10px_rgba(0,255,255,0.7)]"
-                  : "w-2 bg-zinc-500"
-              }`}
-            />
-          ))}
+                ? "w-7 bg-cyan-400 shadow-[0_0_10px_rgba(0,255,255,0.7)]"
+                : "w-2 bg-zinc-500"
+            }`}
+          />
+        ))}
         </div>
       </div>
     </div>

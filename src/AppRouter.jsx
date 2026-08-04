@@ -1,7 +1,7 @@
 import { lazy, Suspense } from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import PublicHome from './pages/PublicHome'
 
-const PublicHome = lazy(() => import('./pages/PublicHome'))
 const ProjectDetails = lazy(() => import('./pages/ProjectDetails'))
 const ProjectDemo = lazy(() => import('./pages/ProjectDemo'))
 const AdminLogin = lazy(() => import('./pages/AdminLogin'))

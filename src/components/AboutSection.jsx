@@ -60,7 +60,7 @@ function AboutSection({ language = "pt" }) {
         >
           <div className="mb-5 flex justify-center lg:hidden">
             <img
-              src="/perfil.png"
+              src="/perfil.webp"
               alt="Enzo"
               draggable={false}
               className="h-28 w-28 rounded-full object-cover object-top shadow-[0_0_30px_rgba(34,211,238,0.18)]"
@@ -111,7 +111,7 @@ function AboutSection({ language = "pt" }) {
           className="hidden flex-1 items-end justify-center lg:flex"
         >
           <img
-            src="/perfil.png"
+            src="/perfil.webp"
             alt="Enzo"
             draggable={false}
             className="max-h-[700px] w-auto select-none object-contain drop-shadow-[0_18px_35px_rgba(0,0,0,0.45)]"

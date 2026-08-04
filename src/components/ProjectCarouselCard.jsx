@@ -34,6 +34,8 @@ function ProjectCarouselCard({ project, position, language = "pt" }) {
         {project.coverImage ? (
           <img
             src={project.coverImage}
+            loading="lazy"
+            decoding="async"
             alt={title}
             draggable={false}
             style={{ objectPosition: project.coverPosition ?? "center" }}

@@ -112,6 +112,8 @@ function AboutSection({ language = "pt" }) {
         >
           <img
             src="/perfil.webp"
+                        loading="lazy"
+                        decoding="async"
             alt="Enzo"
             draggable={false}
             className="max-h-[700px] w-auto select-none object-contain drop-shadow-[0_18px_35px_rgba(0,0,0,0.45)]"

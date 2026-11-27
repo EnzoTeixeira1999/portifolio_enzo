@@ -70,7 +70,7 @@ export default function TracePassCaseStudy({ language, liveUrl, technologies }) 
       <div className="trace-case__frame">
         <header className="trace-case__header">
           <Link to={`/${language}#projects`}>← {t.back}</Link>
-          <a href={documentation} target="_blank" rel="noreferrer">{t.documentation} ↗</a>
+          <a href={documentation} target="_blank" rel="noreferrer">{t.documentation} <span aria-hidden="true">↗&#xFE0E;</span></a>
         </header>
 
         <section className="trace-case__hero" aria-labelledby="trace-case-title">
@@ -80,7 +80,7 @@ export default function TracePassCaseStudy({ language, liveUrl, technologies }) 
             <h1 id="trace-case-title">{t.headline}</h1>
             <p>{t.intro}</p>
             <div className="trace-case__actions">
-              <a className="trace-case__primary" href={demo} target="_blank" rel="noreferrer">{t.test} ↗</a>
+              <a className="trace-case__primary" href={demo} target="_blank" rel="noreferrer">{t.test} <span aria-hidden="true">↗&#xFE0E;</span></a>
               <a href={passport} target="_blank" rel="noreferrer">{t.passport}</a>
             </div>
           </div>
@@ -104,7 +104,7 @@ export default function TracePassCaseStudy({ language, liveUrl, technologies }) 
 
         <footer className="trace-case__footer">
           <div><h2>{t.tryTitle}</h2><p>{t.tryText}</p></div>
-          <a className="trace-case__primary" href={demo} target="_blank" rel="noreferrer">{t.test} ↗</a>
+          <a className="trace-case__primary" href={demo} target="_blank" rel="noreferrer">{t.test} <span aria-hidden="true">↗&#xFE0E;</span></a>
           <ul>{technologies.map((technology) => <li key={technology}>{technology}</li>)}</ul>
         </footer>
       </div>

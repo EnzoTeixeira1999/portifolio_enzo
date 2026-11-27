@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { projectsData } from "../data/projectsData";
 import usePageSeo from "../hooks/usePageSeo";
+import TracePassCaseStudy from "./TracePassCaseStudy";
 
 function ProjectDetails() {
   const { lang, slug } = useParams();
@@ -74,6 +75,10 @@ function ProjectDetails() {
   const coverInitials =
     project.coverInitials ?? project.coverBrand?.slice(0, 2) ?? "ES";
   const liveUrl = getText(project.liveUrl);
+
+  if (project.coverBrand === "TracePass") {
+    return <TracePassCaseStudy language={language} liveUrl={liveUrl} technologies={project.technologies} />;
+  }
 
   const backLabel = language === "pt" ? "← Voltar" : "← Back";
   const developmentLabel =
